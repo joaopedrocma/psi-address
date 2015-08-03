@@ -18,47 +18,49 @@ import br.com.psi.address.entities.Customer;
 import br.com.psi.address.services.CustomerService;
 
 @Controller
-@RequestMapping("/api/users")
+@RequestMapping("/api/customers")
 public class CustomerResource {
 
-    @Autowired
-    private CustomerService customerService;
+	@Autowired
+	private CustomerService customerService;
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public List<Customer> findAll() {
-        return customerService.findAll();
-    }
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<Customer> findAll() {
+		return customerService.findAll();
+	}
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Customer findCustomer(@PathVariable("id") int id) {
-        return customerService.findCustomerById(id);
-    }
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Customer findCustomer(@PathVariable("id") int id) {
+		return customerService.findCustomerById(id);
+	}
 
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-    	Customer savedCustomer = customerService.create(customer);
-        return new ResponseEntity<Customer>(savedCustomer, HttpStatus.CREATED);
-    }
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseBody
+	public ResponseEntity<Customer> createCustomer(
+			@RequestBody Customer customer) {
+		Customer savedCustomer = customerService.create(customer);
+		return new ResponseEntity<Customer>(savedCustomer, HttpStatus.CREATED);
+	}
 
-    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-    	Customer savedCustomer = customerService.update(customer);
-        return new ResponseEntity<Customer>(savedCustomer, HttpStatus.OK);
-    }
+	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseBody
+	public ResponseEntity<Customer> updateCustomer(
+			@RequestBody Customer customer) {
+		Customer savedCustomer = customerService.update(customer);
+		return new ResponseEntity<Customer>(savedCustomer, HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Void> deleteCustomer(@PathVariable("id") int id) {
-    	customerService.deleteCustomer(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<Void> deleteCustomer(@PathVariable("id") int id) {
+		customerService.deleteCustomer(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }
