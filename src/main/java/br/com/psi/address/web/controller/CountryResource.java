@@ -38,7 +38,7 @@ public class CountryResource {
 		return countryService.findCountryById(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public ResponseEntity<Country> createCountry(@RequestBody Country country) {

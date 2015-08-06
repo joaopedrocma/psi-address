@@ -1,40 +1,24 @@
+<!DOCTYPE html>
+<%@include file="taglib.jsp"%>
+
 <html>
 <head>
- <meta charset="utf-8" />
- <title>Cliente</title>
-</head> 
-<body> 
-<form name="formulariocliente" method="post" id="custumerform">
- <div class="box"> 
-  <h1>Cliente :</h1>
- 
-  <label> 
-   <span>ID</span>
-    <input type="text" class="input_text" name="id" id="id"/>
- 
-  </label>
- 
-  <label>
-    <span>Nome Completo</span>
-   <input type="text" class="input_text" name="name" id="name"/>
-   </label>
- 
-  <label>
-    <span>Email</span>
-   <input type="text" class="input_text" name="email" id="email"/>
-  </label>
- 
-  <label>
-   <span>Senha</span>
-   <input type="text" class="input_text" name="password" id="password"/>
-  </label>   
-  
-  <label>
-   <span>Data de Nascimento</span>
-   <input type="text" class="input_text" name="dob" id="dob"/>
-  </label>   
-          
- </div>
-</form> 
+<title>Cliente</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body>
+<form id="sampleForm" method="post" action="/profile">
+     <div>
+         <input type="text" name="firstname" id="firstname">
+     </div>
+     <div>
+         <input type="text" name="lastname" id="lastname">
+     </div>
+     <div>
+         <button type="submit" name="submit">Submit</button>
+     </div>
+</form>
 </body>
 </html>
