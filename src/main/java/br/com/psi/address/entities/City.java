@@ -20,7 +20,7 @@ public class City {
 	private String city;
 
 	@Column(name = "country_id")
-	private Country countryid;
+	private int countryid;
 
 	@Column(name = "last_update")
 	private Date lastupdate;
@@ -28,7 +28,7 @@ public class City {
 	public City() {
 	}
 
-	public City(int cityid, String city, Country countryid, Date lastupdate) {
+	public City(int cityid, String city, int countryid, Date lastupdate) {
 		super();
 		this.cityid = cityid;
 		this.city = city;
@@ -52,11 +52,11 @@ public class City {
 		this.city = city;
 	}
 
-	public Country getCountryid() {
+	public int getCountryid() {
 		return countryid;
 	}
 
-	public void setCountryid(Country countryid) {
+	public void setCountryid(int countryid) {
 		this.countryid = countryid;
 	}
 

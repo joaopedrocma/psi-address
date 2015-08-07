@@ -14,50 +14,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import br.com.psi.address.entities.Address;
-import br.com.psi.address.services.AddressService;
+import br.com.psi.address.entities.Country;
+import br.com.psi.address.services.CountryService;
 
 @Controller
-@RequestMapping("/addresses")
-public class AddressResource {
+@RequestMapping("/countries")
+public class CountryResource {
 
 	@Autowired
-	private AddressService addressService;
+	private CountryService countryService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<Address> findAll() {
-		return addressService.findAll();
+	public List<Country> findAll() {
+		return countryService.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Address findAddress(@PathVariable("id") int id) {
-		return addressService.findAddressById(id);
+	public Country findCountry(@PathVariable("id") int id) {
+		return countryService.findCountryById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Address> createAddress(@RequestBody Address address) {
-		Address savedAddress = addressService.create(address);
-		return new ResponseEntity<Address>(savedAddress, HttpStatus.CREATED);
+	public ResponseEntity<Country> createCountry(@RequestBody Country country) {
+		Country savedCountry = countryService.create(country);
+		return new ResponseEntity<Country>(savedCountry, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Address> updateAddress(@RequestBody Address address) {
-		Address savedAddress = addressService.update(address);
-		return new ResponseEntity<Address>(savedAddress, HttpStatus.OK);
+	public ResponseEntity<Country> updateCountry(@RequestBody Country country) {
+		Country savedCountry = countryService.update(country);
+		return new ResponseEntity<Country>(savedCountry, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Void> deleteAddress(@PathVariable("id") int id) {
-		addressService.deleteAddress(id);
+	public ResponseEntity<Void> deleteCountry(@PathVariable("id") int id) {
+		countryService.deleteCountry(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 

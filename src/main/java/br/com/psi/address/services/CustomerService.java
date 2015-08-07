@@ -26,10 +26,6 @@ public class CustomerService {
 		return CustomerRepository.findOne(id);
 	}
 
-	public Customer login(String email, String password) {
-		return CustomerRepository.findByEmailAndPassword(email, password);
-	}
-
 	public Customer update(Customer customer) {
 		return CustomerRepository.save(customer);
 	}

@@ -37,15 +37,15 @@ public class Customer {
 	@Column(name = "create_date")
 	private Date createdate;
 
-	@Column(name = "Lastupdate")
-	private Date Last_update;
+	@Column(name = "last_update")
+	private Date lastupdate;
 
 	public Customer() {
 	}
 
 	public Customer(int customerid, int storeid, String firstname,
 			String lastname, String email, int addressid, boolean active,
-			Date createdate, Date last_update) {
+			Date createdate, Date lastupdate) {
 		super();
 		this.customerid = customerid;
 		this.storeid = storeid;
@@ -55,7 +55,7 @@ public class Customer {
 		this.addressid = addressid;
 		this.active = active;
 		this.createdate = createdate;
-		Last_update = last_update;
+		this.lastupdate = lastupdate;
 	}
 
 	public int getCustomerid() {
@@ -122,12 +122,12 @@ public class Customer {
 		this.createdate = createdate;
 	}
 
-	public Date getLast_update() {
-		return Last_update;
+	public Date getLastupdate() {
+		return lastupdate;
 	}
 
-	public void setLast_update(Date last_update) {
-		Last_update = last_update;
+	public void setLastupdate(Date lastupdate) {
+		this.lastupdate = lastupdate;
 	}
 
 	@Override
@@ -135,7 +135,7 @@ public class Customer {
 		return "Customer [customerid=" + customerid + ", storeid=" + storeid
 				+ ", firstname=" + firstname + ", lastname=" + lastname
 				+ ", email=" + email + ", addressid=" + addressid + ", active="
-				+ active + ", createdate=" + createdate + ", Last_update="
-				+ Last_update + "]";
+				+ active + ", createdate=" + createdate + ", lastupdate="
+				+ lastupdate + "]";
 	}
 }

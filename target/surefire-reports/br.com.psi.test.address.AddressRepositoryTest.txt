@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.com.psi.test.address.AddressRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.941 sec <<< FAILURE!
-testCrud(br.com.psi.test.address.AddressRepositoryTest)  Time elapsed: 1.743 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.953 sec <<< FAILURE!
+testCrud(br.com.psi.test.address.AddressRepositoryTest)  Time elapsed: 1.758 sec  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
 	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:101)
