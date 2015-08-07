@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.psi.address.config;
 
@@ -10,88 +10,71 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:application.properties" })
-@EnableJpaRepositories(basePackages = "br.com.psi.address")
+@EnableJpaRepositories(basePackages = "br.com.psi.address.repositories")
+@ComponentScan(basePackages = { "br.com.psi.address" })
+@PropertySource(value = { "classpath:application.properties" })
 public class PersistenceConfig {
 
-    @Autowired
-    private Environment env;
-    
-    public PersistenceConfig() {
-		super();
+	@Autowired
+	private Environment env;
+
+	@Bean
+	JpaTransactionManager transactionManager(
+			EntityManagerFactory entityManagerFactory) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactory);
+		return transactionManager;
 	}
 
-    @Value("${init-db:false}")
-    private String initDatabase;
+	@Bean
+	LocalContainerEntityManagerFactoryBean entityManagerFactory(
+			DataSource dataSource, Environment env) {
+		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+		entityManagerFactoryBean.setDataSource(dataSource);
+		entityManagerFactoryBean
+		.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+		entityManagerFactoryBean.setPackagesToScan("br.com.psi.address");
 
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        EntityManagerFactory factory = entityManagerFactory().getObject();
-        return new JpaTransactionManager(factory);
-    }
+		Properties jpaProperties = new Properties();
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		jpaProperties.put("hibernate.dialect",
+				env.getRequiredProperty("hibernate.dialect"));
+		jpaProperties.put("hibernate.hbm2ddl.auto",
+				env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+		jpaProperties.put("hibernate.show_sql",
+				env.getRequiredProperty("hibernate.show_sql"));
 
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(Boolean.TRUE);
-        vendorAdapter.setShowSql(Boolean.TRUE);
+		entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
-        factory.setDataSource(dataSource());
-        factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("br.com.psi.address.entities");
+		return entityManagerFactoryBean;
+	}
 
-        Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.hbm2ddl"
-        		+ "auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        factory.setJpaProperties(jpaProperties);
+	@Bean
+	public HibernateExceptionTranslator hibernateExceptionTranslator() {
+		return new HibernateExceptionTranslator();
+	}
 
-        factory.afterPropertiesSet();
-        factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
-        return factory;
-    }
-
-    @Bean
-    public HibernateExceptionTranslator hibernateExceptionTranslator() {
-        return new HibernateExceptionTranslator();
-    }
-
-    @Bean
-    public DataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.username"));
-        dataSource.setPassword(env.getProperty("jdbc.password"));
-        return dataSource;
-    }
-
-//    @Bean
-//    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
-//        System.out.println("**************************" + initDatabase);
-//        DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
-//        dataSourceInitializer.setDataSource(dataSource);
-//        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-//        databasePopulator.addScript(new ClassPathResource("db.sql"));
-//        dataSourceInitializer.setDatabasePopulator(databasePopulator);
-//        dataSourceInitializer.setEnabled(Boolean.parseBoolean(initDatabase));
-//        return dataSourceInitializer;
-//    }
+	@Bean
+	public DataSource dataSource(Environment env) {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+		dataSource.setUrl(env.getProperty("jdbc.url"));
+		dataSource.setUsername(env.getProperty("jdbc.username"));
+		dataSource.setPassword(env.getProperty("jdbc.password"));
+		return dataSource;
+	}
 }

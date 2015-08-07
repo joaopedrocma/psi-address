@@ -13,28 +13,31 @@ import javax.persistence.Table;
 public class Country {
 	@Id
 	@GeneratedValue
-	private int country_id;
+	@Column(name = "country_id")
+	private int countryid;
+
 	@Column
 	private String country;
-	@Column
-	private Date last_update;
+
+	@Column(name = "last_update")
+	private Date lastupdate;
 
 	public Country() {
 	}
 
-	public Country(int country_id, String country, Date last_update) {
+	public Country(int countryid, String country, Date lastupdate) {
 		super();
-		this.country_id = country_id;
+		this.countryid = countryid;
 		this.country = country;
-		this.last_update = last_update;
+		this.lastupdate = lastupdate;
 	}
 
-	public int getCountry_id() {
-		return country_id;
+	public int getCountryid() {
+		return countryid;
 	}
 
-	public void setCountry_id(int country_id) {
-		this.country_id = country_id;
+	public void setCountryid(int countryid) {
+		this.countryid = countryid;
 	}
 
 	public String getCountry() {
@@ -45,17 +48,17 @@ public class Country {
 		this.country = country;
 	}
 
-	public Date getLast_update() {
-		return last_update;
+	public Date getLastupdate() {
+		return lastupdate;
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	public void setLastupdate(Date lastupdate) {
+		this.lastupdate = lastupdate;
 	}
 
 	@Override
 	public String toString() {
-		return "Country [country_id=" + country_id + ", country=" + country
-				+ ", last_update=" + last_update + "]";
+		return "Country [countryid=" + countryid + ", country=" + country
+				+ ", lastupdate=" + lastupdate + "]";
 	}
 }

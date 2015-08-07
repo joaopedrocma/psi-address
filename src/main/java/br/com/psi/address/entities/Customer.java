@@ -2,14 +2,10 @@ package br.com.psi.address.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,73 +13,81 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue
-	private int customer_id;
-	@Column
-	private int store_id;
-	@Column
-	private String first_name;
-	@Column
-	private String last_name;
+	@Column(name = "customer_id")
+	private int customerid;
+
+	@Column(name = "store_id")
+	private int storeid;
+
+	@Column(name = "first_name")
+	private String firstname;
+
+	@Column(name = "last_name")
+	private String lastname;
+
 	@Column
 	private String email;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id")
-	private int address_id;
+
+	@Column(name = "address_id")
+	private int addressid;
+
 	@Column
 	private boolean active;
-	@Column
-	private Date create_date;
-	@Column
+
+	@Column(name = "create_date")
+	private Date createdate;
+
+	@Column(name = "Lastupdate")
 	private Date Last_update;
 
 	public Customer() {
 	}
 
-	public Customer(int customer_id, int store_id, String first_name,
-			String last_name, String email, int address_id, boolean active,
-			Date create_date, Date last_update) {
+	public Customer(int customerid, int storeid, String firstname,
+			String lastname, String email, int addressid, boolean active,
+			Date createdate, Date last_update) {
 		super();
-		this.customer_id = customer_id;
-		this.store_id = store_id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.customerid = customerid;
+		this.storeid = storeid;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.email = email;
-		this.address_id = address_id;
+		this.addressid = addressid;
 		this.active = active;
-		this.create_date = create_date;
+		this.createdate = createdate;
 		Last_update = last_update;
 	}
 
-	public int getCustomer_id() {
-		return customer_id;
+	public int getCustomerid() {
+		return customerid;
 	}
 
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomerid(int customerid) {
+		this.customerid = customerid;
 	}
 
-	public int getStore_id() {
-		return store_id;
+	public int getStoreid() {
+		return storeid;
 	}
 
-	public void setStore_id(int store_id) {
-		this.store_id = store_id;
+	public void setStoreid(int storeid) {
+		this.storeid = storeid;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -94,12 +98,12 @@ public class Customer {
 		this.email = email;
 	}
 
-	public int getAddress_id() {
-		return address_id;
+	public int getAddressid() {
+		return addressid;
 	}
 
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	public void setAddressid(int addressid) {
+		this.addressid = addressid;
 	}
 
 	public boolean isActive() {
@@ -110,12 +114,12 @@ public class Customer {
 		this.active = active;
 	}
 
-	public Date getCreate_date() {
-		return create_date;
+	public Date getCreatedate() {
+		return createdate;
 	}
 
-	public void setCreate_date(Date create_date) {
-		this.create_date = create_date;
+	public void setCreatedate(Date createdate) {
+		this.createdate = createdate;
 	}
 
 	public Date getLast_update() {
@@ -128,10 +132,10 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [customer_id=" + customer_id + ", store_id="
-				+ store_id + ", first_name=" + first_name + ", last_name="
-				+ last_name + ", email=" + email + ", address_id=" + address_id
-				+ ", active=" + active + ", create_date=" + create_date
-				+ ", Last_update=" + Last_update + "]";
+		return "Customer [customerid=" + customerid + ", storeid=" + storeid
+				+ ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", email=" + email + ", addressid=" + addressid + ", active="
+				+ active + ", createdate=" + createdate + ", Last_update="
+				+ Last_update + "]";
 	}
 }

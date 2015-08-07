@@ -2,61 +2,61 @@ package br.com.psi.address.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "address")
 public class Address {
+
 	@Id
 	@GeneratedValue
-	private int address_id;
-	@Column
+	@Column(name = "address_id")
+	private int addressid;
+
 	private String address;
-	@Column
+
 	private String address2;
-	@Column
+
 	private String district;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "city_id")
-	private int city_id;
-	@Column
-	private String postal_code;
-	@Column
+
+	@Column(name = "city_id")
+	private int cityId;
+
+	@Column(name = "postal_code")
+	private String postalcode;
+
 	private String phone;
-	@Column
-	private Date last_update;
+
+	@Column(name = "last_update")
+	private Date lastupdate;
 
 	public Address() {
 	}
 
-	public Address(int address_id, String address, String address2,
-			String district, int city_id, String postal_code, String phone,
-			Date last_update) {
+	public Address(int addressid, String address, String address2,
+			String district, int cityId, String postalcode, String phone,
+			Date lastupdate) {
 		super();
-		this.address_id = address_id;
+		this.addressid = addressid;
 		this.address = address;
 		this.address2 = address2;
 		this.district = district;
-		this.city_id = city_id;
-		this.postal_code = postal_code;
+		this.cityId = cityId;
+		this.postalcode = postalcode;
 		this.phone = phone;
-		this.last_update = last_update;
+		this.lastupdate = lastupdate;
 	}
 
-	public int getAddress_id() {
-		return address_id;
+	public int getAddressid() {
+		return addressid;
 	}
 
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	public void setAddressid(int addressid) {
+		this.addressid = addressid;
 	}
 
 	public String getAddress() {
@@ -83,20 +83,20 @@ public class Address {
 		this.district = district;
 	}
 
-	public int getCity_id() {
-		return city_id;
+	public int getCityId() {
+		return cityId;
 	}
 
-	public void setCity_id(int city_id) {
-		this.city_id = city_id;
+	public void setCityId(int cityId) {
+		this.cityId = cityId;
 	}
 
-	public String getPostal_code() {
-		return postal_code;
+	public String getPostalcode() {
+		return postalcode;
 	}
 
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalcode(String postalcode) {
+		this.postalcode = postalcode;
 	}
 
 	public String getPhone() {
@@ -107,19 +107,19 @@ public class Address {
 		this.phone = phone;
 	}
 
-	public Date getLast_update() {
-		return last_update;
+	public Date getLastupdate() {
+		return lastupdate;
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	public void setLastupdate(Date lastupdate) {
+		this.lastupdate = lastupdate;
 	}
 
 	@Override
 	public String toString() {
-		return "Address [address_id=" + address_id + ", address=" + address
+		return "Address [addressid=" + addressid + ", address=" + address
 				+ ", address2=" + address2 + ", district=" + district
-				+ ", city_id=" + city_id + ", postal_code=" + postal_code
-				+ ", phone=" + phone + ", last_update=" + last_update + "]";
+				+ ", cityId=" + cityId + ", postalcode=" + postalcode
+				+ ", phone=" + phone + ", lastupdate=" + lastupdate + "]";
 	}
 }

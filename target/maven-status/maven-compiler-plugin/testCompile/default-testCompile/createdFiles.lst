@@ -1,0 +1,3 @@
+br\com\psi\test\address\utils\AddressTestContext.class
+br\com\psi\test\address\AddressRepositoryTest.class
+br\com\psi\test\address\utils\AbstractAddressTest.class

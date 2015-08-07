@@ -3,14 +3,12 @@ package br.com.psi.address.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
 import br.com.psi.address.entities.City;
 import br.com.psi.address.repositories.CityRepository;
 
-@Service
-@Transactional
+@Component
 public class CityService {
 
 	@Autowired

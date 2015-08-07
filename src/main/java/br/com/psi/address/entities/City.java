@@ -2,14 +2,10 @@ package br.com.psi.address.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,32 +13,35 @@ import javax.persistence.Table;
 public class City {
 	@Id
 	@GeneratedValue
-	private int city_id;
+	@Column(name = "city_id")
+	private int cityid;
+
 	@Column
 	private String city;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "country_id")
-	private Country country_id;
-	@Column
-	private Date last_update;
+
+	@Column(name = "country_id")
+	private Country countryid;
+
+	@Column(name = "last_update")
+	private Date lastupdate;
 
 	public City() {
 	}
 
-	public City(int city_id, String city, Country country_id, Date last_update) {
+	public City(int cityid, String city, Country countryid, Date lastupdate) {
 		super();
-		this.city_id = city_id;
+		this.cityid = cityid;
 		this.city = city;
-		this.country_id = country_id;
-		this.last_update = last_update;
+		this.countryid = countryid;
+		this.lastupdate = lastupdate;
 	}
 
-	public int getCity_id() {
-		return city_id;
+	public int getCityid() {
+		return cityid;
 	}
 
-	public void setCity_id(int city_id) {
-		this.city_id = city_id;
+	public void setCityid(int cityid) {
+		this.cityid = cityid;
 	}
 
 	public String getCity() {
@@ -53,25 +52,25 @@ public class City {
 		this.city = city;
 	}
 
-	public Country getCountry_id() {
-		return country_id;
+	public Country getCountryid() {
+		return countryid;
 	}
 
-	public void setCountry_id(Country country_id) {
-		this.country_id = country_id;
+	public void setCountryid(Country countryid) {
+		this.countryid = countryid;
 	}
 
-	public Date getLast_update() {
-		return last_update;
+	public Date getLastupdate() {
+		return lastupdate;
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	public void setLastupdate(Date lastupdate) {
+		this.lastupdate = lastupdate;
 	}
 
 	@Override
 	public String toString() {
-		return "City [city_id=" + city_id + ", city=" + city + ", country_id="
-				+ country_id + ", last_update=" + last_update + "]";
+		return "City [cityid=" + cityid + ", city=" + city + ", countryid="
+				+ countryid + ", lastupdate=" + lastupdate + "]";
 	}
 }
