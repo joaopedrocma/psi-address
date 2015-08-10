@@ -1,0 +1,73 @@
+<div class="container" ng-controller="addressController">
+	<form id="reg" ng-submit="update()" class="form-horizontal">
+		<fieldset>
+			<legend>
+				Register a page for <a href="#address">{{ message }}</a>
+			</legend>
+			<!-- Each input is bound to a property on the prototype newPost object -->
+			<!-- We output a list of success messages (appropriately styled!) for the form. -->
+			<div class="form-group">
+				<div class="col-xs-12">
+					<ul ng-hide="!successMessages" class="success">
+						<div class="alert alert-success">
+							<li ng-repeat="message in successMessages">{{message}}</li>
+						</div>
+					</ul>
+					<!-- Output the list of error messages if any. -->
+					<ul ng-hide="!errorMessages" class="error">
+						<div class="alert alert-error">
+							<li ng-repeat="message in errorMessages">{{message}}</li>
+						</div>
+					</ul>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label class="control-label" for="street">Street:</label><br /> <input
+						type="text" name="street" id="street"
+						ng-model="updateAddresses.street" placeholder="Your street" required
+						autofocus class="form-control" /> <span class="error"
+						ng-show="errors.street">{{errors.street}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-3">
+					<label class="control-label" for="zipcode">Zipcode:</label><br />
+					<input type="text" name="zipcode" id="zipcode"
+						ng-model="updateAddresses.zipcode" placeholder="Your zipcode"
+						required autofocus class="form-control" /> <span class="error"
+						ng-show="errors.zipcode">{{errors.zipcode}}</span>
+				</div>
+				<div class="col-xs-3">
+					<label class="control-label" for="content">Neighbourhood:</label><br />
+					<input type="text" name="neighbourhood" id="zipcode"
+						ng-model="updateAddresses.neighbourhood"
+						placeholder="Your neighbourhood" required autofocus
+						class="form-control" /> <span class="error"
+						ng-show="errors.neighbourhood">{{errors.neighbourhood}}</span>
+				</div>
+				<div class="col-xs-3">
+					<label class="control-label" for="content">City:</label> <input
+						type="text" name="city" id="city" ng-model="updateAddresses.city"
+						placeholder="Your city" required autofocus class="form-control" />
+					<span class="error" ng-show="errors.city">{{errors.city}}</span>
+				</div>
+				<div class="col-xs-3">
+					<label class="control-label" for="content">Country:</label> <input
+						type="text" name="country" id="country"
+						ng-model="updateAddresses.country" placeholder="Your country"
+						required autofocus class="form-control" /> <span class="error"
+						ng-show="errors.country">{{errors.country}}</span>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				<div class="col-xs-offset-3 col-xs-12">
+					<input type="submit" id="register" class="btn btn-primary"
+						value="Register"> <input type="reset" ng-click="reset()"
+						class="btn btn-default" value="Reset">
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

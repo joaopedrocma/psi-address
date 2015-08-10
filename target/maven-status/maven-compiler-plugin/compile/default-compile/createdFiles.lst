@@ -8,6 +8,7 @@ br\com\psi\address\repositories\CityRepository.class
 br\com\psi\address\repositories\CustomerRepository.class
 br\com\psi\address\web\config\WebInitializer.class
 br\com\psi\address\services\CityService.class
+br\com\psi\address\web\controller\CountryResource.class
 br\com\psi\address\entities\Customer.class
 br\com\psi\address\config\PersistenceConfig.class
 br\com\psi\address\entities\Country.class
