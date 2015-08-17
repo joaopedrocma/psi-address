@@ -1,0 +1,20 @@
+<!DOCTYPE html ng-app="myApp">
+<html ng-controller="customerController">
+<!-- header code -->
+<body>
+ 
+<div ng-repeat="customer in customers">{{customer.firstName}} {{customer.lastName}}</div>
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_pt-br.js"></script>
+<script src="js/jquery.js"></script>
+
+</body>
+
+</html>
