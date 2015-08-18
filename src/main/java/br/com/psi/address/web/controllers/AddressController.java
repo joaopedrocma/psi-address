@@ -31,7 +31,7 @@ public class AddressController {
 		return addressService.findAll();
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Address findAddress(@PathVariable("id") int id) {
@@ -54,7 +54,7 @@ public class AddressController {
 		return new ResponseEntity<Address>(savedAddress, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Void> deleteAddress(@PathVariable("id") int id) {
 		addressService.deleteAddress(id);

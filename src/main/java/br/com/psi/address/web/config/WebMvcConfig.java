@@ -21,7 +21,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public ViewResolver resolver() {
 		InternalResourceViewResolver url = new InternalResourceViewResolver();
-		url.setPrefix("/resources/partials/");
+		url.setPrefix("/");
 		url.setSuffix(".html");
 		return url;
 	}

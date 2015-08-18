@@ -31,7 +31,7 @@ public class CountryController {
 		return countryService.findAll();
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Country findCountry(@PathVariable("id") int id) {
@@ -54,7 +54,7 @@ public class CountryController {
 		return new ResponseEntity<Country>(savedCountry, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Void> deleteCountry(@PathVariable("id") int id) {
 		countryService.deleteCountry(id);

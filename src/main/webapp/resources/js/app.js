@@ -1,15 +1,16 @@
-angular
-    .module('myApp', ['ngResource'])
-    .service('customerService', function ($log, $resource) {
-        return {
-            getAll: function () {
-                var customerResource = $resource('customers', {}, {
-                    query: {method: 'GET', params: {}, isArray: true}
-                });
-                return customerResource.query();
-            }
-        }
-    })
-    .controller('customerController', function ($scope, $log, customersService) {
-        $scope.customer = customerService.getAll();
-    });
+var psiaddress = angular.module('psiaddress', [ 'ngResource' ]);
+
+psiaddress.config(function($routeProvider) {
+	$routeProvider
+
+	.when('/', {
+		templateUrl : 'pages/home.html',
+		controller : 'mainController'
+	})
+	
+	.when('/customer', {
+		templateUrl : 'pages/customer.html',
+		controller : 'customerController'
+	});
+	
+});

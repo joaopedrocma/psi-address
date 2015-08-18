@@ -1,0 +1,19 @@
+<div data-ng-controller="customerController">
+	<table>
+		<thead>
+			<tr>
+				<th colspan="4">Customers Detail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="customer in customerList">
+				<td>{{$index + 1}}</td>
+				<td>
+					{{customer.Customer.firstname}}&nbsp;{{customer.Customer.lastname}}
+				</td>
+				<td>{{customer.email}}</td>
+				<td>{{customer.Constructors[0].name}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
