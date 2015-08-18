@@ -1,15 +1,20 @@
-psiaddress.controller('customerController', function($scope) {
+var psiaddressController = angular.module('psiaddressController', []);
+
+psiaddressController.controller('mainController', function($scope) {
+});
+
+psiaddressController.controller('customerController', function($scope) {
 	$scope.customerList = [ {
 		Customer : {
-			firstname : 'Joao Pedro',
-			lastname : 'Castilho'
+			firstname : 'Sebastian',
+			lastname : 'Vettel'
 		},
-		email : 'joaopedrocma@hotmail.com'
+		email : '322'
 	}, {
 		Customer : {
-			firstname : 'Fulano',
-			lastname : 'abc'
+			firstname : 'Fernando',
+			lastname : 'Alonso'
 		},
-		email : 'abc@hotmail.com'
+		email : '207'
 	} ];
 });
