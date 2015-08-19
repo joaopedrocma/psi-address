@@ -1,16 +1,19 @@
-<div>
-	<p>Customer Page</p>
+<div data-ng-controller="customerController">
 	<table>
 		<thead>
 			<tr>
-				<th colspan="4">Customers Detail</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Email</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="customer in customerList">
-				<td>{{$index + 1}}</td>
-				<td>{{customer.Customer.firstname}}&nbsp;{{customer.Customer.lastname}}</td>
-				<td>{{customer.email}}</td>
+				<td>{{customer.firstname}}&nbsp;</td>
+				<td>{{customer.lastname}}&nbsp;</td>
+				<td>{{customer.email}}&nbsp;</td>
+				<td><a data-ng-click="editCustomer(customer.id)">edit</a></td>
+				<td><a data-ng-click="deleteCustomer(customer.id)">delete</a></td>
 			</tr>
 		</tbody>
 	</table>

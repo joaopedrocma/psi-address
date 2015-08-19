@@ -1,5 +1,4 @@
-var psiaddress = angular.module('psiaddress', [ 'ngRoute',
-		'psiaddressController' ]);
+var psiaddress = angular.module('psiaddress', [ 'ngRoute', 'apiService' ]);
 
 psiaddress.config(function($routeProvider) {
 		$routeProvider
