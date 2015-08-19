@@ -1,9 +1,9 @@
-var apiService = angular.module('apiService', ['ngResource']);
+var psiaddressService = angular.module('psiaddressService', ['ngResource']);
 
 	var baseUrl = 'http://localhost:8080'
 		
-	service.factory('Customers', function($resource){
-    	return $resource(baseUrl + '/customers/:id', { id: '@id' }, {
+		psiaddressService.factory('Customers', function($resource){
+			return $resource(baseUrl + '/customers/:id', { id: '@id' }, {
    		 query:  {method: 'GET', isArray: true},
    		 get:    {method: 'GET'},
    		 remove: {method: 'DELETE', params: {id: '@id'}},

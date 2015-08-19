@@ -4,12 +4,13 @@ br\com\psi\address\web\controllers\CustomerController.class
 br\com\psi\address\web\controllers\CountryController.class
 br\com\psi\address\services\CountryService.class
 br\com\psi\address\services\CustomerService.class
+br\com\psi\address\config\AppConfig.class
 br\com\psi\address\repositories\AddressRepository.class
 br\com\psi\address\repositories\CityRepository.class
 br\com\psi\address\repositories\CustomerRepository.class
-br\com\psi\address\web\config\WebInitializer.class
 br\com\psi\address\web\controllers\AddressController.class
 br\com\psi\address\services\CityService.class
+br\com\psi\address\web\config\WebAppInitializer.class
 br\com\psi\address\entities\Customer.class
 br\com\psi\address\config\PersistenceConfig.class
 br\com\psi\address\web\config\WebMvcConfig.class

@@ -1,8 +1,10 @@
+D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\config\AppConfig.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\web\config\WebMvcConfig.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\services\AddressService.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\services\CityService.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\services\CustomerService.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\web\controllers\CountryController.java
+D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\web\config\WebAppInitializer.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\entities\City.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\web\controllers\AddressController.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\entities\Address.java
@@ -10,7 +12,6 @@ D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\ent
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\repositories\CustomerRepository.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\config\PersistenceConfig.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\services\CountryService.java
-D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\web\config\WebInitializer.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\entities\Country.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\repositories\AddressRepository.java
 D:\IT\Datacom\eclipse\Workspace\psi-address\src\main\java\br\com\psi\address\web\controllers\CustomerController.java
