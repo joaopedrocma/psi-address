@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 67b4d183a51e19f63fa234d5e548696e8d010e17
 psiaddress.controller('mainController', [ '$scope', function($scope) {
 } ]);
 
