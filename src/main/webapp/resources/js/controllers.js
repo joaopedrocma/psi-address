@@ -1,9 +1,7 @@
-var psiaddressController = angular.module('psiaddressController', []);
-
-psiaddressController.controller('mainController', [ '$scope', function($scope) {
+psiaddress.controller('mainController', [ '$scope', function($scope) {
 } ]);
 
-psiaddressController.controller('customerController', [ '$scope', '$http',
+psiaddress.controller('customerController', [ '$scope', '$http',
 		'$location', 'Customers',
 		function($scope, $http, $location, Customers) {
 			$scope.customerList = Customers.query();
