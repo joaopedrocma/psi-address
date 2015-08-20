@@ -6,6 +6,7 @@
 			</tr>
 
 			<tr>
+				<th>Id</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 				<th>Email</th>
@@ -13,11 +14,14 @@
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="customer in customerList">
+				<td>{{customer.customerid}}&nbsp;</td>
 				<td>{{customer.firstname}}&nbsp;</td>
 				<td>{{customer.lastname}}&nbsp;</td>
 				<td>{{customer.email}}&nbsp;</td>
-				<td><a data-ng-click="editCustomer(customer.id)">edit</a></td>
-				<td><a data-ng-click="deleteCustomer(customer.id)">delete</a></td>
+				<td><input type="button" value="Editar"
+					data-ng-click="editCustomer(customer.customerid)"></td>
+				<td><input type="button" value="Deletar"
+					data-ng-click="deleteCustomer(customer.customerid)"></td>
 			</tr>
 		</tbody>
 	</table>

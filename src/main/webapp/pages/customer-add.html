@@ -1,96 +1,38 @@
-<div class="container" data-ng-controller="customerController">
+<div data-ng-controller="customerController">
 	<form id="reg" data-ng-submit="register()">
 		<fieldset>
-			<legend>
-				Register a page for <a href="#customer">{{ message }}</a>
-			</legend>
-			<!-- Each input is bound to a property on the prototype newPost object -->
-			<!-- We output a list of success messages (appropriately styled!) for the form. -->
-			<ul data-ng-hide="!successMessages" class="success">
-				<li data-ng-repeat="message in successMessages">{{message}}</li>
-			</ul>
-
-			<!-- Output the list of error messages if any. -->
-			<ul data-ng-hide="!errorMessages" class="error">
-				<li ng-repeat="message in errorMessages">{{message}}</li>
-			</ul>
-			<!-- Each input is bound to a property on the prototype newPost object -->
-			<div class="form-group">
-				<label for="customer">Post Category:</label> <select
-					ng-model="newCustomer.address.id"
-					ng-options="address.id as address.street for address in addressList"
-					class="form-control"></select>
-			</div>
-			<div class="form-group">
-				<label for="name">name:</label> <input type="text" name="name"
-					id="name" ng-model="newCustomer.name"
-					placeholder="Your name" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.name">{{errors.name}}</span>
-			</div>
-			<div class="form-group">
-				<label for="nickname">nickname:</label> <input type="text" name="nickname"
-					id="nickname" ng-model="newCustomer.nickname"
-					placeholder="Your nickname" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.nickname">{{errors.nickname}}</span>
-			</div>
-			<div class="form-group">
-				<label for="code">code:</label> <input type="text" name="code"
-					id="code" ng-model="newCustomer.code"
-					placeholder="Your code" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.code">{{errors.code}}</span>
-			</div>
-			<div class="form-group">
-				<label for="content">cpf:</label> <input type="number" name="cpf"
-					id="cpf" ng-model="newCustomer.cpf"
-					placeholder="Your cpf" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.cpf">{{errors.cpf}}</span>
-			</div>
-			<div class="form-group">
-				<label for="content">rg:</label> <input type="number" name="rg"
-					id="rg" ng-model="newCustomer.rg"
-					placeholder="Your rg" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.rg">{{errors.rg}}</span>
-			</div>
-			<div class="form-group">
-				<label for="content">bornDate:</label> <input type="text" name="bornDate"
-					id="bornDate" ng-model="newCustomer.bornDate"
-					placeholder="Your bornDate" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.bornDate">{{errors.bornDate}}</span>
-			</div>
-			<div class="form-group">
-				<label for="content">spouse:</label> <input type="text" name="spouse"
-					id="spouse" ng-model="newCustomer.spouse"
-					placeholder="Your spouse" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.spouse">{{errors.spouse}}</span>
-			</div>
-			<div class="form-group">
-				<label for="content">father:</label> <input type="text" name="father"
-					id="father" ng-model="newCustomer.father"
-					placeholder="Your father" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.father">{{errors.father}}</span>
-			</div>
-			<div class="form-group">
-				<label for="content">mother:</label> <input type="text" name="mother"
-					id="mother" ng-model="newCustomer.mother"
-					placeholder="Your mother" required autofocus class="form-control" />
-				<span class="error" ng-show="errors.mother">{{errors.mother}}</span>
-			</div>
-			<div class="form-group">
-				<label for="customer">Type:</label> <select
-					ng-model="newCustomer.customerType"
-					ng-options="value.id as value.name for value in customerTypes" class="form-control"></select>
-			</div>
-			<div class="form-group">
-				<label for="customer">Gender:</label> <select
-					ng-model="newCustomer.gender"
-					ng-options="value.id as value.name for value in genders" class="form-control"></select>
-			</div>
-			<!-- There are two buttons, the default submit action (which is bound for the whole form), and a reset button, that clears the form. -->
 			<div>
-				<input type="submit" id="register" value="Register" /> <input
-					type="button" ng-click="reset()" name="cancel" id="cancel"
-					value="Cancel" />
+				{{title}}<br /> <br />
 			</div>
+
+			<div>
+				<label for="customer">Post Category:</label> <select
+					data-ng-model="newCustomer.address.addressid"
+					data-ng-options="address.addressid as address.address for address in addressList"></select><br />
+			</div>
+
+			<div>
+				<label for="firstname">Primeiro Nome:</label> <input type="text"
+					name="firstname" id="firstname"
+					data-ng-model="newCustomer.firstname"
+					placeholder="Seu Primeiro Nome" /><br />
+			</div>
+
+			<div>
+				<label for="lastname">Segundo Nome:</label> <input type="text"
+					name="lastname" id="lastname" data-ng-model="newCustomer.lastname"
+					placeholder="Seu Sobrenome" /><br />
+			</div>
+
+			<div>
+				<label for="email">Email:</label> <input type="text" name="email"
+					id="email" data-ng-model="newCustomer.email"
+					placeholder="Seu Email" /><br />
+			</div>
+
+			<input type="submit" id="register" value="Register" /> <input
+				type="button" data-ng-click="reset()" name="cancel" id="cancel"
+				value="Cancel" /><br />
 		</fieldset>
 	</form>
 </div>

@@ -31,10 +31,10 @@ public class CustomerController {
 		return customerService.findAll();
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Customer findCustomers(@PathVariable int id) {
+	public Customer findCustomers(@PathVariable("id") int id) {
 		return customerService.findCustomerById(id);
 	}
 
@@ -56,9 +56,9 @@ public class CustomerController {
 		return new ResponseEntity<Customer>(savedCustomer, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Void> deleteCustomer(@PathVariable int id) {
+	public ResponseEntity<Void> deleteCustomer(@PathVariable("id") int id) {
 		customerService.deleteCustomer(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
