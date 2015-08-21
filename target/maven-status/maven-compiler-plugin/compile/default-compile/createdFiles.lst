@@ -15,5 +15,6 @@ br\com\psi\address\entities\Customer.class
 br\com\psi\address\config\PersistenceConfig.class
 br\com\psi\address\web\config\WebMvcConfig.class
 br\com\psi\address\entities\Country.class
+br\com\psi\address\web\controllers\CityController.class
 br\com\psi\address\repositories\CountryRepository.class
 br\com\psi\address\entities\Address.class

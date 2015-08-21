@@ -1,0 +1,32 @@
+<div data-ng-controller="addressController">
+	<table>
+		<thead>
+			<tr>
+				<td>{{title}}<br /></td>
+			</tr>
+
+			<tr>
+				<th>Id</th>
+				<th>Endereco</th>
+				<th>Complemento</th>
+				<th>Bairro</th>
+				<th>CEP</th>
+				<th>Telefone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="address in addressList">
+				<td>{{address.addressid}}&nbsp;</td>
+				<td>{{address.address}}&nbsp;</td>
+				<td>{{address.address2}}&nbsp;</td>
+				<td>{{address.district}}&nbsp;</td>
+				<td>{{address.postalcode}}&nbsp;</td>
+				<td>{{address.phone}}&nbsp;</td>
+				<td><input type="button" value="Editar"
+					data-ng-click="editAddress(address.addressid)"></td>
+				<td><input type="button" value="Deletar"
+					data-ng-click="deleteAddress(address.addressid)"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

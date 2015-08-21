@@ -1,0 +1,24 @@
+<div data-ng-controller="cityController">
+	<form data-ng-submit="register()">
+		<fieldset>
+			<div>
+				{{title}}<br /> <br />
+			</div>
+
+			<div>
+				<label for="countryid">Pais:</label> <select
+					data-ng-model="newCity.country.countryid"
+					data-ng-options="country.countryid as country.country for country in countryList"></select><br />
+			</div>
+
+			<div>
+				<label for="city">Cidade:</label> <input type="text" name="city"
+					id="city" data-ng-model="newCity.city" placeholder="Nome da Cidade" /><br />
+			</div>
+
+			<input type="submit" id="register" value="Register" /> <input
+				type="button" data-ng-click="reset()" name="cancel" id="cancel"
+				value="Cancel" /><br />
+		</fieldset>
+	</form>
+</div>

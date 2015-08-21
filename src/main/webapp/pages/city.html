@@ -1,0 +1,24 @@
+<div data-ng-controller="cityController">
+	<table>
+		<thead>
+			<tr>
+				<td>{{title}}<br /></td>
+			</tr>
+
+			<tr>
+				<th>Id</th>
+				<th>Cidade</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="city in cityList">
+				<td>{{city.cityid}}&nbsp;</td>
+				<td>{{city.city}}&nbsp;</td>
+				<td><input type="button" value="Editar"
+					data-ng-click="editCity(city.cityid)"></td>
+				<td><input type="button" value="Deletar"
+					data-ng-click="deleteCity(city.cityid)"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

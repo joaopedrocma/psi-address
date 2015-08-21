@@ -1,0 +1,24 @@
+<div data-ng-controller="countryController">
+	<table>
+		<thead>
+			<tr>
+				<td>{{title}}<br /></td>
+			</tr>
+
+			<tr>
+				<th>Id</th>
+				<th>Pais</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="country in countryList">
+				<td>{{country.countryid}}&nbsp;</td>
+				<td>{{country.country}}&nbsp;</td>
+				<td><input type="button" value="Editar"
+					data-ng-click="editCountry(country.countryid)"></td>
+				<td><input type="button" value="Deletar"
+					data-ng-click="deleteCountry(country.countryid)"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

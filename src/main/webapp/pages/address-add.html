@@ -1,0 +1,49 @@
+<div data-ng-controller="addressController">
+	<form id="reg" data-ng-submit="register()">
+		<fieldset>
+			<div>
+				{{title}}<br /> <br />
+			</div>
+
+			<div>
+				<label for="cityid">Cidade:</label> <select
+					data-ng-model="newAddress.city.cityid"
+					data-ng-options="city.cityid as city.city for city in cityList"></select><br />
+			</div>
+
+			<div>
+				<label for="address">Endereco:</label> <input type="text"
+					name="address" id="address" data-ng-model="newAddress.address"
+					placeholder="Seu Endereco" /><br />
+			</div>
+
+			<div>
+				<label for="address2">Complemento:</label> <input type="text"
+					name="address2" id="address2" data-ng-model="newAddress.address2"
+					placeholder="Complemento de Endereco" /><br />
+			</div>
+
+			<div>
+				<label for="district">Bairro:</label> <input type="text"
+					name="district" id="district" data-ng-model="newAddress.district"
+					placeholder="Seu Bairro" /><br />
+			</div>
+
+			<div>
+				<label for="postalcode">CEP:</label> <input type="text"
+					name="postalcode" id="postalcode"
+					data-ng-model="newAddress.postalcode" placeholder="Seu CEP" /><br />
+			</div>
+
+			<div>
+				<label for="phone">Telefone:</label> <input type="text" name="phone"
+					id="phone" data-ng-model="newAddress.phone"
+					placeholder="Seu Telefone" /><br />
+			</div>
+
+			<input type="submit" id="register" value="Register" /> <input
+				type="button" data-ng-click="reset()" name="cancel" id="cancel"
+				value="Cancel" /><br />
+		</fieldset>
+	</form>
+</div>

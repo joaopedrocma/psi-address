@@ -1,12 +1,12 @@
 <div data-ng-controller="customerController">
-	<form id="reg" data-ng-submit="register()">
+	<form data-ng-submit="register()">
 		<fieldset>
 			<div>
 				{{title}}<br /> <br />
 			</div>
 
 			<div>
-				<label for="customer">Post Category:</label> <select
+				<label for="addressid">Endereco:</label> <select
 					data-ng-model="newCustomer.address.addressid"
 					data-ng-options="address.addressid as address.address for address in addressList"></select><br />
 			</div>
