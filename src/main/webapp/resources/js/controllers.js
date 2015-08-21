@@ -2,8 +2,8 @@ psiaddress.controller('mainController', [ '$scope', function($scope) {
 } ]);
 
 psiaddress.controller('customerController', [ '$scope', '$http', '$location',
-		'Customers', 'Addresses',
-		function($scope, $http, $location, Customers, Addresses) {
+		'$routeParams', 'Customers', 'Addresses',
+		function($scope, $http, $location, $routeParams, Customers, Addresses) {
 
 			$scope.title = 'Customer Controller Working!'
 
@@ -12,6 +12,12 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 
 			$scope.refresh = function() {
 				$scope.customers = Customers.query();
+			};
+
+			$scope.init = function() {
+				$scope.updateCustomer = Customers.get({
+					id : $routeParams.id
+				});
 			};
 
 			$scope.reset = function() {
@@ -65,8 +71,8 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 		} ]);
 
 psiaddress.controller('addressController', [ '$scope', '$http', '$location',
-		'Addresses', 'Cities',
-		function($scope, $http, $location, Addresses, Cities) {
+		'$routeParams', 'Addresses', 'Cities',
+		function($scope, $http, $location, $routeParams, Addresses, Cities) {
 			$scope.curPage = 0;
 			$scope.pageSize = 10;
 
@@ -77,6 +83,12 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 
 			$scope.refresh = function() {
 				$scope.addresses = Addresses.query();
+			};
+
+			$scope.init = function() {
+				$scope.updateCustomer = Customers.get({
+					id : $routeParams.id
+				});
 			};
 
 			$scope.reset = function() {
@@ -117,6 +129,10 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
+				$scope.updateAddress = Customers.get({
+					id : $routeParams.id
+				});
+
 				Addresses.edit($scope.updateAddress, function(data) {
 
 					$scope.refresh();
@@ -135,8 +151,8 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 		} ]);
 
 psiaddress.controller('cityController', [ '$scope', '$http', '$location',
-		'Cities', 'Countries',
-		function($scope, $http, $location, Cities, Countries) {
+		'$routeParams', 'Cities', 'Countries',
+		function($scope, $http, $location, $routeParams, Cities, Countries) {
 
 			$scope.title = 'City Controller Working!'
 
@@ -145,6 +161,12 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 
 			$scope.refresh = function() {
 				$scope.cities = Cities.query();
+			};
+
+			$scope.init = function() {
+				$scope.updateCity = Cities.get({
+					id : $routeParams.id
+				});
 			};
 
 			$scope.reset = function() {
@@ -184,6 +206,10 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
+				$scope.updateCity = Customers.get({
+					id : $routeParams.id
+				});
+
 				Cities.edit($scope.updateCity, function(data) {
 
 					$scope.refresh();
@@ -198,7 +224,8 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 		} ]);
 
 psiaddress.controller('countryController', [ '$scope', '$http', '$location',
-		'Countries', function($scope, $http, $location, Countries) {
+		'$routeParams', 'Countries',
+		function($scope, $http, $location, $routeParams, Countries) {
 
 			$scope.title = 'Country Controller Working!'
 
@@ -206,6 +233,12 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 
 			$scope.refresh = function() {
 				$scope.countries = Countries.query();
+			};
+
+			$scope.init = function() {
+				$scope.updateCountry = Countries.get({
+					id : $routeParams.id
+				});
 			};
 
 			$scope.reset = function() {
@@ -244,6 +277,10 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
+
+				$scope.updateCountry = Customers.get({
+					id : $routeParams.id
+				});
 
 				Countries.edit($scope.updateCountry, function(data) {
 

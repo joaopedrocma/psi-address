@@ -19,7 +19,7 @@ psiaddress.config(function($routeProvider) {
 		controller : 'customerController'
 	})
 
-	.when('/customer-edit', {
+	.when('/customer-edit/:id', {
 		templateUrl : 'pages/customer-edit.html',
 		controller : 'customerController'
 	})
@@ -34,7 +34,7 @@ psiaddress.config(function($routeProvider) {
 		controller : 'addressController'
 	})
 
-	.when('/address-edit', {
+	.when('/address-edit/:id', {
 		templateUrl : 'pages/address-edit.html',
 		controller : 'addressController'
 	})
@@ -49,7 +49,7 @@ psiaddress.config(function($routeProvider) {
 		controller : 'cityController'
 	})
 
-	.when('/city-edit', {
+	.when('/city-edit/:id', {
 		templateUrl : 'pages/city-edit.html',
 		controller : 'cityController'
 	})
@@ -64,7 +64,7 @@ psiaddress.config(function($routeProvider) {
 		controller : 'countryController'
 	})
 
-	.when('/country-edit', {
+	.when('/country-edit/:id', {
 		templateUrl : 'pages/country-edit.html',
 		controller : 'countryController'
 	})
