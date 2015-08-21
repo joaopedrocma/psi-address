@@ -28,7 +28,7 @@ public class AddressRepositoryTest extends AbstractAddressTest {
 		ad.setAddress2("40");
 		ad.setDistrict("ccc");
 		ad.setPostalcode("123");
-		ad.setCityId(1);
+		ad.setCityid(1);
 		ad.setPhone("123");
 		addressService.create(ad);
 

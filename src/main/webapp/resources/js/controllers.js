@@ -27,6 +27,7 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 				Customers.remove({
 					id : customerId
 				});
+				$scope.refresh();
 				$location.path('/customer/');
 			};
 
@@ -91,8 +92,8 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				Addresses.remove({
 					id : addressId
 				});
+				$scope.refresh();
 				$location.path('/address/');
-				$scope.successMessages = [ 'Addresses Updated' ];
 
 			};
 
@@ -102,6 +103,8 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				$scope.errors = {};
 
 				Addresses.save($scope.newAddress, function(data) {
+
+					$scope.successMessages = [ 'Addresses Updated' ];
 
 					$scope.refresh();
 
@@ -157,6 +160,7 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 				Cities.remove({
 					id : cityId
 				});
+				$scope.refresh();
 				$location.path('/city/');
 			};
 
@@ -217,6 +221,7 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 				Countries.remove({
 					id : countryId
 				});
+				$scope.refresh();
 				$location.path('/country/');
 			};
 

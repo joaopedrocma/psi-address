@@ -24,7 +24,7 @@ public class Address {
 	private String district;
 
 	@Column(name = "city_id")
-	private int cityId;
+	private int cityid;
 
 	@Column(name = "postal_code")
 	private String postalcode;
@@ -38,14 +38,14 @@ public class Address {
 	}
 
 	public Address(int addressid, String address, String address2,
-			String district, int cityId, String postalcode, String phone,
+			String district, int cityid, String postalcode, String phone,
 			Date lastupdate) {
 		super();
 		this.addressid = addressid;
 		this.address = address;
 		this.address2 = address2;
 		this.district = district;
-		this.cityId = cityId;
+		this.cityid = cityid;
 		this.postalcode = postalcode;
 		this.phone = phone;
 		this.lastupdate = lastupdate;
@@ -83,12 +83,12 @@ public class Address {
 		this.district = district;
 	}
 
-	public int getCityId() {
-		return cityId;
+	public int getCityid() {
+		return cityid;
 	}
 
-	public void setCityId(int cityId) {
-		this.cityId = cityId;
+	public void setCityid(int cityid) {
+		this.cityid = cityid;
 	}
 
 	public String getPostalcode() {
@@ -119,7 +119,7 @@ public class Address {
 	public String toString() {
 		return "Address [addressid=" + addressid + ", address=" + address
 				+ ", address2=" + address2 + ", district=" + district
-				+ ", cityId=" + cityId + ", postalcode=" + postalcode
+				+ ", cityid=" + cityid + ", postalcode=" + postalcode
 				+ ", phone=" + phone + ", lastupdate=" + lastupdate + "]";
 	}
 }
