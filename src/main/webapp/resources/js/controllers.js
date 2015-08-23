@@ -278,7 +278,7 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
-				$scope.updateCountry = Customers.get({
+				$scope.updateCountry = Countries.get({
 					id : $routeParams.id
 				});
 
