@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<div data-ng-controller="cityController">
+	<form data-ng-submit="update()" data-ng-init="init()">
+		<fieldset>
+			<div>
+				{{title}}<br /> <br />
+			</div>
 
-</body>
-</html>
+			<div>
+				<label for="countryid">Pais:</label> <select
+					data-ng-model="updateCity.countryid"
+					data-ng-options="country.countryid as country.country for country in countryList"></select><br />
+			</div>
+
+			<div>
+				<label for="city">Cidade:</label> <input type="text" name="city"
+					id="city" data-ng-model="updateCity.city" placeholder="Nome da Cidade" /><br />
+			</div>
+
+			<input type="submit" id="update" value="Atualizar" /> <input
+				type="button" data-ng-click="reset()" name="cancel" id="cancel"
+				value="Cancel" /><br />
+		</fieldset>
+	</form>
+</div>

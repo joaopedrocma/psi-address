@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<div data-ng-controller="countryController">
+	<form data-ng-submit="update()" data-ng-init="init()">
+		<fieldset>
+			<div>
+				{{title}}<br /> <br />
+			</div>
 
-</body>
-</html>
+			<div>
+				<label for="country">Nome do País:</label> <input type="text"
+					name="country" id="country"
+					data-ng-model="updateCountry.country"
+					placeholder="Nome do Pais" />
+			</div>
+
+			
+
+			<input type="submit" id="update" value="Atualizar" /> <input
+				type="button" data-ng-click="reset()" name="cancel" id="cancel"
+				value="Cancelar" /><br />
+		</fieldset>
+	</form>
+</div>
