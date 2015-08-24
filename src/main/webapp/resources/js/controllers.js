@@ -11,7 +11,7 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 			$scope.customerList = Customers.query();
 
 			$scope.refresh = function() {
-				$scope.customers = Customers.query();
+				$scope.customerList = Customers.query();
 			};
 
 			$scope.init = function() {
@@ -33,6 +33,7 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 				Customers.remove({
 					id : customerId
 				});
+				
 				$scope.refresh();
 				$location.path('/customer/');
 			};
@@ -59,6 +60,8 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 
 				Customers.edit($scope.updateCustomer, function(data) {
 
+					$location.path('/customer/');
+
 					$scope.refresh();
 
 					$scope.reset();
@@ -82,11 +85,11 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			$scope.addressList = Addresses.query();
 
 			$scope.refresh = function() {
-				$scope.addresses = Addresses.query();
+				$scope.addressList = Addresses.query();
 			};
 
 			$scope.init = function() {
-				$scope.updateCustomer = Customers.get({
+				$scope.updateAddress = Addresses.get({
 					id : $routeParams.id
 				});
 			};
@@ -104,6 +107,7 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				Addresses.remove({
 					id : addressId
 				});
+				
 				$scope.refresh();
 				$location.path('/address/');
 
@@ -116,7 +120,9 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 
 				Addresses.save($scope.newAddress, function(data) {
 
-					$scope.successMessages = [ 'Addresses Updated' ];
+					$scope.successMessages = [ 'Addresses Registered' ];
+
+					$location.path('/address/');
 
 					$scope.refresh();
 
@@ -129,12 +135,10 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
-				$scope.updateAddress = Customers.get({
-					id : $routeParams.id
-				});
-
 				Addresses.edit($scope.updateAddress, function(data) {
 
+					$location.path('/address/');
+					
 					$scope.refresh();
 
 					$scope.reset();
@@ -160,7 +164,7 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 			$scope.cityList = Cities.query();
 
 			$scope.refresh = function() {
-				$scope.cities = Cities.query();
+				$scope.cityList = Cities.query();
 			};
 
 			$scope.init = function() {
@@ -182,6 +186,7 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 				Cities.remove({
 					id : cityId
 				});
+				
 				$scope.refresh();
 				$location.path('/city/');
 			};
@@ -206,11 +211,9 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
-				$scope.updateCity = Customers.get({
-					id : $routeParams.id
-				});
-
 				Cities.edit($scope.updateCity, function(data) {
+
+					$location.path('/city/');
 
 					$scope.refresh();
 
@@ -232,7 +235,7 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 			$scope.countryList = Countries.query();
 
 			$scope.refresh = function() {
-				$scope.countries = Countries.query();
+				$scope.countryList = Countries.query();
 			};
 
 			$scope.init = function() {
@@ -254,6 +257,7 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 				Countries.remove({
 					id : countryId
 				});
+				
 				$scope.refresh();
 				$location.path('/country/');
 			};
@@ -278,11 +282,9 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
-				$scope.updateCountry = Customers.get({
-					id : $routeParams.id
-				});
-
 				Countries.edit($scope.updateCountry, function(data) {
+
+					$location.path('/country/');
 
 					$scope.refresh();
 

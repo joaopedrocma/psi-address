@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<div data-ng-controller="addressController">
+	<form data-ng-submit="update()" data-ng-init="init()">
+		<fieldset>
+			<div>
+				{{title}}<br /> <br />
+			</div>
 
-</body>
-</html>
+			<div>
+				<label for="cityid">Cidade:</label> <select
+					data-ng-model="updateAddress.cityid"
+					data-ng-options="city.cityid as city.city for city in cityList"></select><br />
+			</div>
+
+			<div>
+				<label for="address">Endereco:</label> <input type="text"
+					name="address" id="address" data-ng-model="updateAddress.address"
+					placeholder="Seu Endereco" /><br />
+			</div>
+
+			<div>
+				<label for="address2">Complemento:</label> <input type="text"
+					name="address2" id="address2"
+					data-ng-model="updateAddress.address2"
+					placeholder="Complemento de Endereco" /><br />
+			</div>
+
+			<div>
+				<label for="district">Bairro:</label> <input type="text"
+					name="district" id="district"
+					data-ng-model="updateAddress.district" placeholder="Seu Bairro" /><br />
+			</div>
+
+			<div>
+				<label for="postalcode">CEP:</label> <input type="text"
+					name="postalcode" id="postalcode"
+					data-ng-model="updateAddress.postalcode" placeholder="Seu CEP" /><br />
+			</div>
+
+			<div>
+				<label for="phone">Telefone:</label> <input type="text" name="phone"
+					id="phone" data-ng-model="updateAddress.phone"
+					placeholder="Seu Telefone" /><br />
+			</div>
+
+			<input type="submit" id="update" value="Atualizar" /> <input
+				type="button" data-ng-click="reset()" name="cancel" id="cancel"
+				value="Cancelar" /><br />
+		</fieldset>
+	</form>
+</div>
