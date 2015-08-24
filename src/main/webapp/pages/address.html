@@ -1,32 +1,47 @@
 <div data-ng-controller="addressController">
-	<table>
-		<thead>
-			<tr>
-				<td>{{title}}<br /></td>
-			</tr>
-
-			<tr>
-				<th>Id</th>
-				<th>Endereco</th>
-				<th>Complemento</th>
-				<th>Bairro</th>
-				<th>CEP</th>
-				<th>Telefone</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr data-ng-repeat="address in addressList">
-				<td>{{address.addressid}}&nbsp;</td>
-				<td>{{address.address}}&nbsp;</td>
-				<td>{{address.address2}}&nbsp;</td>
-				<td>{{address.district}}&nbsp;</td>
-				<td>{{address.postalcode}}&nbsp;</td>
-				<td>{{address.phone}}&nbsp;</td>
-				<td><input type="button" value="Editar"
-					data-ng-click="editAddress(address.addressid)"></td>
-				<td><input type="button" value="Deletar"
-					data-ng-click="deleteAddress(address.addressid)"></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div>
+					<h3>{{ title }}</h3>
+				</div>
+				<div class="table-responsive">
+					<div style="float: left">
+						<a href="#address-add"><button type="button"
+								class="btn btn-success">{{ message }}</button></a>
+					</div>
+					<br /> <br />
+					<table ng-hide="addresses.length == 0"
+						class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Endereco</th>
+								<th>Complemento</th>
+								<th>Bairro</th>
+								<th>CEP</th>
+								<th>Telefone</th>
+								<th style="width: 20px;">&nbsp;</th>
+								<th style="width: 20px;">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="address in addressList">
+								<td>{{address.addressid}}&nbsp;</td>
+								<td>{{address.address}}&nbsp;</td>
+								<td>{{address.address2}}&nbsp;</td>
+								<td>{{address.district}}&nbsp;</td>
+								<td>{{address.postalcode}}&nbsp;</td>
+								<td>{{address.phone}}&nbsp;</td>
+								<td><a data-ng-click="editAddress(address.addressid)"
+									class="btn btn-small btn-primary">Editar</a></td>
+								<td><a data-ng-click="deleteAddress(address.addressid)"
+									class="btn btn-small btn-danger">Deletar</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

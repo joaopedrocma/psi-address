@@ -1,32 +1,83 @@
 <!DOCTYPE html>
 <html data-ng-app="psiaddress">
-<head>
-<meta charset="UTF-8">
-<title>Index</title>
 
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Main Page">
+<meta name="author" content="Jota">
+
+<title>Home</title>
+
+<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/bootstrap/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="resources/bootstrap/css/simple-sidebar.css" rel="stylesheet" />
 </head>
 
 <body data-ng-controller="mainController">
-	<a href="#">Index</a>
-	<br />
-	<br />
-	<a href="#customer">Clientes</a>
-	<a href="#customer-add">Cadastrar Cliente</a>
-	<br />
-	<br />
-	<a href="#address">Enderecos</a>
-	<a href="#address-add">Cadastrar Enderecos</a>
-	<br />
-	<br />
-	<a href="#city">Cidades</a>
-	<a href="#city-add">Cadastrar Cidades</a>
-	<br />
-	<br />
-	<a href="#country">Paises</a>
-	<a href="#country-add">Cadastrar Pais</a>
 
-	<div data-ng-view></div>
+	<div id="wrapper">
 
+		<div id="sidebar-wrapper">
+
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"><span style="color: white;">Olá,
+						Cliente </span></li>
+				<li><a href="#">Início</a></li>
+
+				<li><a href="#customer">Clientes</a></li>
+
+				<li><a href="#address">Endereços</a></li>
+
+				<li><a href="#city">Cidades</a></li>
+
+				<li><a href="#country">Países</a></li>
+			</ul>
+		</div>
+
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">ks</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#"><i class="fa fa-shield"></i> Emprestimo</a></li>
+					<li><a href="#"><i class="fa fa-shield"></i> Seguro
+							Prestamista</a></li>
+					<li role="presentation" class="dropdown"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						role="button" aria-expanded="false"> <img
+							src="img/user8-128x128.jpg" width="25" height="25"
+							class="user-image" alt="User Image" />&nbsp;&nbsp;Cliente
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li>
+								<div style="margin-left: 5px; float: left;">
+									<a href="#" class="btn btn-default btn-flat">Profile</a>
+								</div>
+								<div style="margin-right: 5px; float: right;">
+									<form th:action="@{/logout}" method="post">
+										<input type="submit" value="Sign Out"
+											class="btn btn-default btn-flat" />
+									</form>
+								</div>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div data-ng-view></div>
+	</div>
+	<footer class="text-center">
+		<p>Footer</p>
+	</footer>
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
 	<script

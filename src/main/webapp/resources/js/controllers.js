@@ -5,7 +5,8 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Customers', 'Addresses',
 		function($scope, $http, $location, $routeParams, Customers, Addresses) {
 
-			$scope.title = 'Customer Controller Working!'
+			$scope.title = 'Clientes';
+			$scope.message = 'Adicionar Cliente';
 
 			$scope.addressList = Addresses.query();
 			$scope.customerList = Customers.query();
@@ -33,7 +34,7 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 				Customers.remove({
 					id : customerId
 				});
-				
+
 				$scope.refresh();
 				$location.path('/customer/');
 			};
@@ -79,7 +80,8 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			$scope.curPage = 0;
 			$scope.pageSize = 10;
 
-			$scope.title = 'Address Controller Working!'
+			$scope.title = 'Endereços';
+			$scope.message = 'Adicionar Endereço';
 
 			$scope.cityList = Cities.query();
 			$scope.addressList = Addresses.query();
@@ -107,7 +109,7 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				Addresses.remove({
 					id : addressId
 				});
-				
+
 				$scope.refresh();
 				$location.path('/address/');
 
@@ -138,7 +140,7 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 				Addresses.edit($scope.updateAddress, function(data) {
 
 					$location.path('/address/');
-					
+
 					$scope.refresh();
 
 					$scope.reset();
@@ -158,7 +160,8 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Cities', 'Countries',
 		function($scope, $http, $location, $routeParams, Cities, Countries) {
 
-			$scope.title = 'City Controller Working!'
+			$scope.title = 'Cidades';
+			$scope.message = 'Adicionar Cidade';
 
 			$scope.countryList = Countries.query();
 			$scope.cityList = Cities.query();
@@ -186,7 +189,7 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 				Cities.remove({
 					id : cityId
 				});
-				
+
 				$scope.refresh();
 				$location.path('/city/');
 			};
@@ -230,7 +233,8 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Countries',
 		function($scope, $http, $location, $routeParams, Countries) {
 
-			$scope.title = 'Country Controller Working!'
+			$scope.title = 'Países';
+			$scope.message = 'Adicionar País';
 
 			$scope.countryList = Countries.query();
 
@@ -257,7 +261,7 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 				Countries.remove({
 					id : countryId
 				});
-				
+
 				$scope.refresh();
 				$location.path('/country/');
 			};
