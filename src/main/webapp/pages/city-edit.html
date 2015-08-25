@@ -1,25 +1,38 @@
+<meta charset="utf-8">
+<meta name="description" content="City-Edit Page">
+<meta name="author" content="Jota/Leandro">
+
 <div data-ng-controller="cityController">
 	<form data-ng-submit="update()" data-ng-init="init()">
 		<fieldset>
-			<div>
-				{{title}}<br /> <br />
+			<legend>
+				{{titleEdit}}<br /> <br />
+			</legend>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="countryid">País:</label> <select
+						class="form-control" data-ng-model="updateCity.countryid"
+						data-ng-options="country.countryid as country.country for country in countryList"></select><br />
+				</div>
 			</div>
 
-			<div>
-				<label for="countryid">Pais:</label> <select
-					data-ng-model="updateCity.countryid"
-					data-ng-options="country.countryid as country.country for country in countryList"></select><br />
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="city">Cidade:</label> <input
+						class="form-control" type="text" name="city" id="city"
+						data-ng-model="updateCity.city" placeholder="Nome da Cidade" /><br />
+				</div>
 			</div>
 
-			<div>
-				<label for="city">Cidade:</label> <input type="text" name="city"
-					id="city" data-ng-model="updateCity.city"
-					placeholder="Nome da Cidade" /><br />
-			</div>
+			<br />
 
-			<input type="submit" id="update" value="Atualizar" /> <input
-				type="button" data-ng-click="reset()" name="cancel" id="cancel"
-				value="Cancel" /><br />
+			<div class="form-group">
+				<div class="col-xs-9">
+					<input type="submit" id="saveEdit" class="btn btn-primary"
+						value="Salvar" /> 
+				</div>
+			</div>
 		</fieldset>
 	</form>
 </div>

@@ -1,20 +1,41 @@
-<div data-ng-controller="countryController">
+<meta charset="utf-8">
+<meta name="description" content="Country-Add Page">
+<meta name="author" content="Jota/Leandro">
+
+<div class="container" data-ng-controller="countryController">
 	<form id="reg" data-ng-submit="register()">
 		<fieldset>
-			<div>
-				{{title}}<br /> <br />
+			<legend>
+				{{titleAdd}}<br /> <br />
+			</legend>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<div ng-hide="!successMessage" class="success">
+						<div class="alert alert-success">
+							<div>{{successMessage}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="country">Nome do Pais:</label> <input
+						class="form-control" type="text" name="country" id="country"
+						data-ng-model="newCountry.country" placeholder="Nome do Pais" /><br />
+				</div>
 			</div>
 
-			<div>
-				<label for="country">Nome do Pais:</label> <input type="text"
-					name="country" id="country"
-					data-ng-model="newCountry.country"
-					placeholder="Nome do Pais" />
+			<div class="form-group">
+				<div class="col-xs-9">
+					<input type="submit" id="register" class="btn btn-primary"
+						value="Registrar" /> <input type="button" data-ng-click="reset()"
+						name="cancel" id="cancel" class="btn btn-default" value="Limpar" />
+				</div>
 			</div>
-
-			<input type="submit" id="register" value="Registrar" /> <input
-				type="button" data-ng-click="reset()" name="cancel" id="cancel"
-				value="Cancelar" /><br />
 		</fieldset>
 	</form>
 </div>

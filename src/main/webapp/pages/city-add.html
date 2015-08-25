@@ -1,24 +1,51 @@
-<div data-ng-controller="cityController">
+<meta charset="utf-8">
+<meta name="description" content="City-Add Page">
+<meta name="author" content="Jota/Leandro">
+
+<div class="container" data-ng-controller="cityController">
 	<form data-ng-submit="register()">
 		<fieldset>
-			<div>
-				{{title}}<br /> <br />
+			<legend>
+				{{titleAdd}}<br /> <br />
+			</legend>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<div ng-hide="!successMessage" class="success">
+						<div class="alert alert-success">
+							<div>{{successMessage}}</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div>
-				<label for="countryid">Pais:</label> <select
-					data-ng-model="newCity.countryid"
-					data-ng-options="country.countryid as country.country for country in countryList"></select><br />
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="countryid">País:</label> <select
+						class="form-control" data-ng-model="newCity.countryid"
+						data-ng-options="country.countryid as country.country for country in countryList"></select><br />
+				</div>
 			</div>
 
-			<div>
-				<label for="city">Cidade:</label> <input type="text" name="city"
-					id="city" data-ng-model="newCity.city" placeholder="Nome da Cidade" /><br />
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="city">Cidade:</label> <input
+						class="form-control" type="text" name="city" id="city"
+						data-ng-model="newCity.city" placeholder="Nome da Cidade" /><br />
+				</div>
 			</div>
 
-			<input type="submit" id="register" value="Register" /> <input
-				type="button" data-ng-click="reset()" name="cancel" id="cancel"
-				value="Cancel" /><br />
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<input type="submit" id="register" class="btn btn-primary"
+						value="Registrar" /> <input type="button" data-ng-click="reset()"
+						class="btn btn-default" name="cancel" id="cancel" value="Limpar" />
+				</div>
+			</div>
 		</fieldset>
 	</form>
 </div>

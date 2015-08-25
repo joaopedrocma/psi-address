@@ -6,6 +6,8 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 		function($scope, $http, $location, $routeParams, Customers, Addresses) {
 
 			$scope.title = 'Clientes';
+			$scope.titleAdd = 'Novo Cliente';
+			$scope.titleEdit = 'Editar Cliente';
 			$scope.message = 'Adicionar Cliente';
 
 			$scope.addressList = Addresses.query();
@@ -40,13 +42,12 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.register = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
 				Customers.save($scope.newCustomer, function(data) {
 
-					$scope.successMessages = [ 'Customers Registered' ];
+					$scope.successMessage = 'Cliente Registrado com Sucesso!';
 
 					$scope.refresh();
 
@@ -55,7 +56,6 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.update = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
@@ -81,6 +81,8 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			$scope.pageSize = 10;
 
 			$scope.title = 'Endereços';
+			$scope.titleAdd = 'Novo Endereço';
+			$scope.titleEdit = 'Editar Endereço';
 			$scope.message = 'Adicionar Endereço';
 
 			$scope.cityList = Cities.query();
@@ -116,15 +118,12 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.register = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
 				Addresses.save($scope.newAddress, function(data) {
 
-					$scope.successMessages = [ 'Addresses Registered' ];
-
-					$location.path('/address/');
+					$scope.successMessage = 'Endereço Registrado com Sucesso!';
 
 					$scope.refresh();
 
@@ -133,7 +132,6 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.update = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
@@ -161,6 +159,8 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 		function($scope, $http, $location, $routeParams, Cities, Countries) {
 
 			$scope.title = 'Cidades';
+			$scope.titleAdd = 'Nova Cidade';
+			$scope.titleEdit = 'Editar Cidade';
 			$scope.message = 'Adicionar Cidade';
 
 			$scope.countryList = Countries.query();
@@ -195,13 +195,12 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.register = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
 				Cities.save($scope.newCity, function(data) {
 
-					$scope.successMessages = [ 'Cities Registered' ];
+					$scope.successMessage = 'Cidade Registrada com Sucesso!';
 
 					$scope.refresh();
 
@@ -210,7 +209,6 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.update = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
@@ -234,6 +232,8 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 		function($scope, $http, $location, $routeParams, Countries) {
 
 			$scope.title = 'Países';
+			$scope.titleAdd = 'Novo País';
+			$scope.titleEdit = 'Editar País';
 			$scope.message = 'Adicionar País';
 
 			$scope.countryList = Countries.query();
@@ -267,13 +267,12 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.register = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 
 				Countries.save($scope.newCountry, function(data) {
 
-					$scope.successMessages = [ 'Country Registered' ];
+					$scope.successMessage = 'País Registrado com Sucesso!';
 
 					$scope.refresh();
 
@@ -282,7 +281,6 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.update = function() {
-				$scope.successMessages = '';
 				$scope.errorMessages = '';
 				$scope.errors = {};
 

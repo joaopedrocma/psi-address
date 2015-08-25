@@ -1,19 +1,28 @@
+<meta charset="utf-8">
+<meta name="description" content="Country-Edit Page">
+<meta name="author" content="Jota/Leandro">
+
 <div data-ng-controller="countryController">
 	<form data-ng-submit="update()" data-ng-init="init()">
 		<fieldset>
-			<div>
-				{{title}}<br /> <br />
+			<legend>
+				{{titleEdit}}<br /> <br />
+			</legend>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="country">Nome do Pais:</label> <input
+						class="form-control" type="text" name="country" id="country"
+						data-ng-model="updateCountry.country" placeholder="Nome do Pais" /><br />
+				</div>
 			</div>
 
-			<div>
-				<label for="country">Nome do Pais:</label> <input type="text"
-					name="country" id="country" data-ng-model="updateCountry.country"
-					placeholder="Nome do Pais" />
+			<div class="form-group">
+				<div class="col-xs-9">
+					<input type="submit" id="saveEdit" class="btn btn-primary"
+						value="Salvar" /> 
+				</div>
 			</div>
-
-			<input type="submit" id="update" value="Atualizar" /> <input
-				type="button" data-ng-click="reset()" name="cancel" id="cancel"
-				value="Cancelar" /><br />
 		</fieldset>
 	</form>
 </div>

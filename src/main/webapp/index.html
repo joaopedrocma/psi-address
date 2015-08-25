@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="description" content="Main Page">
-<meta name="author" content="Jota">
+<meta name="author" content="Jota/Leandro">
 
 <title>Home</title>
 
@@ -17,12 +17,10 @@
 <body data-ng-controller="mainController">
 
 	<div id="wrapper">
-
 		<div id="sidebar-wrapper">
-
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand"><span style="color: white;">Olá,
-						Cliente </span></li>
+						Usuário </span></li>
 				<li><a href="#">Início</a></li>
 
 				<li><a href="#customer">Clientes</a></li>
@@ -38,38 +36,8 @@
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/">ks</a>
+					<a class="navbar-brand" href="/">Header</a>
 				</div>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="#"><i class="fa fa-shield"></i> Emprestimo</a></li>
-					<li><a href="#"><i class="fa fa-shield"></i> Seguro
-							Prestamista</a></li>
-					<li role="presentation" class="dropdown"><a
-						class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-expanded="false"> <img
-							src="img/user8-128x128.jpg" width="25" height="25"
-							class="user-image" alt="User Image" />&nbsp;&nbsp;Cliente
-					</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li>
-								<div style="margin-left: 5px; float: left;">
-									<a href="#" class="btn btn-default btn-flat">Profile</a>
-								</div>
-								<div style="margin-right: 5px; float: right;">
-									<form th:action="@{/logout}" method="post">
-										<input type="submit" value="Sign Out"
-											class="btn btn-default btn-flat" />
-									</form>
-								</div>
-							</li>
-						</ul></li>
-				</ul>
 			</div>
 		</nav>
 
