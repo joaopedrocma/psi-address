@@ -14,7 +14,12 @@
 						<a href="#customer-add"><button type="button"
 								class="btn btn-success">{{ message }}</button></a>
 					</div>
+					
 					<br /> <br />
+					
+					<div class="form-group">
+						<input type="search" ng-model="search" placeholder="Buscar por...">
+					</div>
 					<table ng-hide="customers.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
@@ -28,7 +33,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="customer in customerList">
+							<tr data-ng-repeat="customer in customerList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
 								<td>{{customer.customerid}}&nbsp;</td>
 								<td>{{customer.firstname}}&nbsp;</td>
 								<td>{{customer.lastname}}&nbsp;</td>
@@ -40,8 +45,26 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="pagination pagination-centered"
+						ng-show="customerList.length">
+						<ul class="pagination-controle pagination">
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
+									&lt; ANT</button>
+							</li>
+							<li><span>Página {{curPage + 1}} De {{ numberOfPages()}}</span></li>
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage >= customerList.length/pageSize - 1"
+									ng-click="curPage = curPage+1">PROX &gt;</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+			<em ng-show="customerList.length == 0">Não Há Endereços
+				Cadastrados.</em>
 		</div>
 	</div>
 </div>

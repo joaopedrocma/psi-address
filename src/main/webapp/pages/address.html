@@ -14,8 +14,13 @@
 						<a href="#address-add"><button type="button"
 								class="btn btn-success">{{ message }}</button></a>
 					</div>
+					
 					<br /> <br />
-					<table ng-hide="addresses.length == 0"
+
+					<div class="form-group">
+						<input type="search" ng-model="search" placeholder="Buscar por...">
+					</div>
+					<table ng-hide="addressList.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -30,7 +35,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="address in addressList">
+							<tr data-ng-repeat="address in addressList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
 								<td>{{address.addressid}}&nbsp;</td>
 								<td>{{address.address}}&nbsp;</td>
 								<td>{{address.address2}}&nbsp;</td>
@@ -44,8 +49,26 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="pagination pagination-centered"
+						ng-show="addressList.length">
+						<ul class="pagination-controle pagination">
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
+									&lt; ANT</button>
+							</li>
+							<li><span>Página {{curPage + 1}} De {{ numberOfPages()}}</span></li>
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage >= addressList.length/pageSize - 1"
+									ng-click="curPage = curPage+1">PROX &gt;</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+			<em ng-show="addressList.length == 0">Não Há Endereços
+				Cadastrados.</em>
 		</div>
 	</div>
 </div>

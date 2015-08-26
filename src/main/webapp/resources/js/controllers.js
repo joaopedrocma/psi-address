@@ -4,6 +4,8 @@ psiaddress.controller('mainController', [ '$scope', function($scope) {
 psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Customers', 'Addresses',
 		function($scope, $http, $location, $routeParams, Customers, Addresses) {
+			$scope.curPage = 0;
+			$scope.pageSize = 6;
 
 			$scope.title = 'Clientes';
 			$scope.titleAdd = 'Novo Cliente';
@@ -37,8 +39,9 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 					id : customerId
 				});
 
-				$scope.refresh();
 				$location.path('/customer/');
+
+				$scope.refresh();
 			};
 
 			$scope.register = function() {
@@ -72,13 +75,19 @@ psiaddress.controller('customerController', [ '$scope', '$http', '$location',
 			$scope.refresh();
 
 			$scope.reset();
+
+			$scope.orderBy = 'firstname';
+
+			$scope.numberOfPages = function() {
+				return Math.ceil($scope.customerList.length / $scope.pageSize);
+			}
 		} ]);
 
 psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Addresses', 'Cities',
 		function($scope, $http, $location, $routeParams, Addresses, Cities) {
 			$scope.curPage = 0;
-			$scope.pageSize = 10;
+			$scope.pageSize = 6;
 
 			$scope.title = 'Endereços';
 			$scope.titleAdd = 'Novo Endereço';
@@ -112,8 +121,9 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 					id : addressId
 				});
 
-				$scope.refresh();
 				$location.path('/address/');
+
+				$scope.refresh();
 
 			};
 
@@ -149,14 +159,18 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 
 			$scope.reset();
 
+			$scope.orderBy = 'address';
+
 			$scope.numberOfPages = function() {
-				return Math.ceil($scope.addresses.length / $scope.pageSize);
+				return Math.ceil($scope.addressList.length / $scope.pageSize);
 			}
 		} ]);
 
 psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Cities', 'Countries',
 		function($scope, $http, $location, $routeParams, Cities, Countries) {
+			$scope.curPage = 0;
+			$scope.pageSize = 6;
 
 			$scope.title = 'Cidades';
 			$scope.titleAdd = 'Nova Cidade';
@@ -190,8 +204,9 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 					id : cityId
 				});
 
-				$scope.refresh();
 				$location.path('/city/');
+
+				$scope.refresh();
 			};
 
 			$scope.register = function() {
@@ -225,11 +240,19 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 			$scope.refresh();
 
 			$scope.reset();
+
+			$scope.orderBy = 'city';
+
+			$scope.numberOfPages = function() {
+				return Math.ceil($scope.cityList.length / $scope.pageSize);
+			}
 		} ]);
 
 psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Countries',
 		function($scope, $http, $location, $routeParams, Countries) {
+			$scope.curPage = 0;
+			$scope.pageSize = 6;
 
 			$scope.title = 'Países';
 			$scope.titleAdd = 'Novo País';
@@ -262,8 +285,9 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 					id : countryId
 				});
 
-				$scope.refresh();
 				$location.path('/country/');
+
+				$scope.refresh();
 			};
 
 			$scope.register = function() {
@@ -297,4 +321,10 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 			$scope.refresh();
 
 			$scope.reset();
+
+			$scope.orderBy = 'country';
+
+			$scope.numberOfPages = function() {
+				return Math.ceil($scope.countryList.length / $scope.pageSize);
+			}
 		} ]);

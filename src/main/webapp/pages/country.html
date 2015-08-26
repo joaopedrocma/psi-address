@@ -14,7 +14,12 @@
 						<a href="#country-add"><button type="button"
 								class="btn btn-success">{{ message }}</button></a>
 					</div>
+
 					<br /> <br />
+
+					<div class="form-group">
+						<input type="search" ng-model="search" placeholder="Buscar por...">
+					</div>
 					<table ng-hide="countries.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
@@ -26,7 +31,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="country in countryList">
+							<tr
+								data-ng-repeat="country in countryList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
 								<td>{{country.countryid}}&nbsp;</td>
 								<td>{{country.country}}&nbsp;</td>
 								<td><a data-ng-click="editCountry(country.countryid)"
@@ -36,8 +42,26 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="pagination pagination-centered"
+						ng-show="countryList.length">
+						<ul class="pagination-controle pagination">
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
+									&lt; ANT</button>
+							</li>
+							<li><span>Página {{curPage + 1}} De {{
+									numberOfPages()}}</span></li>
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage >= countryList.length/pageSize - 1"
+									ng-click="curPage = curPage+1">PROX &gt;</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+			<em ng-show="countryList.length == 0">Não Há Países Cadastrados.</em>
 		</div>
 	</div>
 </div>

@@ -69,3 +69,10 @@ psiaddress.config(function($routeProvider) {
 		controller : 'countryController'
 	})
 });
+
+angular.module('psiaddress').filter('pagination', function() {
+	return function(input, start) {
+		start = +start;
+		return input.slice(start);
+	};
+});

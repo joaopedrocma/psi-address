@@ -14,7 +14,12 @@
 						<a href="#city-add"><button type="button"
 								class="btn btn-success">{{ message }}</button></a>
 					</div>
+					
 					<br /> <br />
+					
+					<div class="form-group">
+						<input type="search" ng-model="search" placeholder="Buscar por...">
+					</div>
 					<table ng-hide="cities.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
@@ -26,7 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="city in cityList">
+							<tr data-ng-repeat="city in cityList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
 								<td>{{city.cityid}}&nbsp;</td>
 								<td>{{city.city}}&nbsp;</td>
 								<td><a data-ng-click="editCity(city.cityid)"
@@ -36,8 +41,25 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="pagination pagination-centered"
+						ng-show="cityList.length">
+						<ul class="pagination-controle pagination">
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
+									&lt; ANT</button>
+							</li>
+							<li><span>Página {{curPage + 1}} De {{ numberOfPages()}}</span></li>
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage >= cityList.length/pageSize - 1"
+									ng-click="curPage = curPage+1">PROX &gt;</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+			<em ng-show="cityList.length == 0">Não Há Cidades Cadastradas.</em>
 		</div>
 	</div>
 </div>
