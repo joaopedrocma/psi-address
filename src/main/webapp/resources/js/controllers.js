@@ -282,7 +282,7 @@ psiaddress.controller('stateController', [ '$scope', '$http', '$location',
 			};
 
 			$scope.deleteState = function(stateId) {
-				State.remove({
+				States.remove({
 					id : stateId
 				});
 
