@@ -19,21 +19,13 @@ public class City {
 	@Column
 	private String city;
 
-	@Column(name = "country_id")
-	private int countryid;
+	@Column(name = "state_id")
+	private int stateid;
 
 	@Column(name = "last_update")
 	private Date lastupdate;
 
 	public City() {
-	}
-
-	public City(int cityid, String city, int countryid, Date lastupdate) {
-		super();
-		this.cityid = cityid;
-		this.city = city;
-		this.countryid = countryid;
-		this.lastupdate = lastupdate;
 	}
 
 	public int getCityid() {
@@ -52,12 +44,12 @@ public class City {
 		this.city = city;
 	}
 
-	public int getCountryid() {
-		return countryid;
+	public int getStateid() {
+		return stateid;
 	}
 
-	public void setCountryid(int countryid) {
-		this.countryid = countryid;
+	public void setStateid(int stateid) {
+		this.stateid = stateid;
 	}
 
 	public Date getLastupdate() {
@@ -70,7 +62,7 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [cityid=" + cityid + ", city=" + city + ", countryid="
-				+ countryid + ", lastupdate=" + lastupdate + "]";
+		return "City [cityid=" + cityid + ", city=" + city + ", stateid="
+				+ stateid + ", lastupdate=" + lastupdate + "]";
 	}
 }

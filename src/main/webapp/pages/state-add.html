@@ -1,8 +1,8 @@
 <meta charset="utf-8">
-<meta name="description" content="City-Add Page">
+<meta name="description" content="State-Add Page">
 <meta name="author" content="Jota/Leandro">
 
-<div class="container" data-ng-controller="cityController">
+<div class="container" data-ng-controller="stateController">
 	<form data-ng-submit="register()">
 		<fieldset>
 			<legend>
@@ -23,17 +23,17 @@
 
 			<div class="form-group">
 				<div class="col-xs-9">
-					<label class="control-label" for="stateid">Estado:</label> <select
-						class="form-control" data-ng-model="newCity.stateid"
-						data-ng-options="state.stateid as state.state for state in stateList"></select><br />
+					<label class="control-label" for="countryid">País:</label> <select
+						class="form-control" data-ng-model="newState.countryid"
+						data-ng-options="country.countryid as country.country for country in countryList"></select><br />
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-xs-9">
-					<label class="control-label" for="city">Cidade:</label> <input
-						class="form-control" type="text" name="city" id="city"
-						data-ng-model="newCity.city" placeholder="Nome da Cidade" /><br />
+					<label class="control-label" for="state">Estado:</label> <input
+						class="form-control" type="text" name="state" id="state"
+						data-ng-model="newState.state" placeholder="Nome do Estado" /><br />
 				</div>
 			</div>
 

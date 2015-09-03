@@ -167,8 +167,8 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 		} ]);
 
 psiaddress.controller('cityController', [ '$scope', '$http', '$location',
-		'$routeParams', 'Cities', 'Countries',
-		function($scope, $http, $location, $routeParams, Cities, Countries) {
+		'$routeParams', 'Cities', 'States',
+		function($scope, $http, $location, $routeParams, Cities, States) {
 			$scope.curPage = 0;
 			$scope.pageSize = 6;
 
@@ -177,7 +177,7 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 			$scope.titleEdit = 'Editar Cidade';
 			$scope.message = 'Adicionar Cidade';
 
-			$scope.countryList = Countries.query();
+			$scope.stateList = States.query();
 			$scope.cityList = Cities.query();
 
 			$scope.refresh = function() {
@@ -245,6 +245,88 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 
 			$scope.numberOfPages = function() {
 				return Math.ceil($scope.cityList.length / $scope.pageSize);
+			}
+		} ]);
+
+psiaddress.controller('stateController', [ '$scope', '$http', '$location',
+		'$routeParams', 'States', 'Countries',
+		function($scope, $http, $location, $routeParams, States, Countries) {
+			$scope.curPage = 0;
+			$scope.pageSize = 6;
+
+			$scope.title = 'Estados';
+			$scope.titleAdd = 'Novo Estado';
+			$scope.titleEdit = 'Editar Estado';
+			$scope.message = 'Adicionar Estado';
+
+			$scope.countryList = Countries.query();
+			$scope.stateList = States.query();
+
+			$scope.refresh = function() {
+				$scope.stateList = States.query();
+			};
+
+			$scope.init = function() {
+				$scope.updateState = States.get({
+					id : $routeParams.id
+				});
+			};
+
+			$scope.reset = function() {
+				$scope.newState = {};
+			};
+
+			$scope.editState = function(stateId) {
+				console.log(stateId);
+				$location.path('/state-edit/' + stateId);
+			};
+
+			$scope.deleteState = function(stateId) {
+				State.remove({
+					id : stateId
+				});
+
+				$location.path('/state/');
+
+				$scope.refresh();
+			};
+
+			$scope.register = function() {
+				$scope.errorMessages = '';
+				$scope.errors = {};
+
+				States.save($scope.newState, function(data) {
+
+					$scope.successMessage = 'Estado Registrado com Sucesso!';
+
+					$scope.refresh();
+
+					$scope.reset();
+				});
+			};
+
+			$scope.update = function() {
+				$scope.errorMessages = '';
+				$scope.errors = {};
+
+				States.edit($scope.updateState, function(data) {
+
+					$location.path('/state/');
+
+					$scope.refresh();
+
+					$scope.reset();
+				});
+			};
+
+			$scope.refresh();
+
+			$scope.reset();
+
+			$scope.orderBy = 'state';
+
+			$scope.numberOfPages = function() {
+				return Math.ceil($scope.stateList.length / $scope.pageSize);
 			}
 		} ]);
 

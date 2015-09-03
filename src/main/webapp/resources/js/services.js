@@ -32,6 +32,16 @@ var psiaddressService = angular.module('psiaddressService', ['ngResource']);
 	  });	    
 	});
 		
+		psiaddressService.factory('States', function($resource){
+		    return $resource(baseUrl + '/states/:id', { id: '@id' }, {
+		  query:  {method: 'GET', isArray: true},
+		  get:    {method: 'GET'},
+		  remove: {method: 'DELETE', params: {id: '@id'}},
+		  edit:   {method: 'PUT', params: {id: '@id'}},
+		  add:    {method: 'POST'}
+	  });	    
+	});
+		
 		psiaddressService.factory('Countries', function($resource){
 		    return $resource(baseUrl + '/countries/:id', { id: '@id' }, {
 		  query:  {method: 'GET', isArray: true},
@@ -41,9 +51,5 @@ var psiaddressService = angular.module('psiaddressService', ['ngResource']);
 		  add:    {method: 'POST'}
 	  });	    
 	});
-
-
-	
-	
 	
 		

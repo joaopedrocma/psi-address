@@ -53,6 +53,21 @@ psiaddress.config(function($routeProvider) {
 		templateUrl : 'pages/city-edit.html',
 		controller : 'cityController'
 	})
+	
+	.when('/state', {
+		templateUrl : 'pages/state.html',
+		controller : 'stateController'
+	})
+
+	.when('/state-add', {
+		templateUrl : 'pages/state-add.html',
+		controller : 'stateController'
+	})
+
+	.when('/state-edit/:id', {
+		templateUrl : 'pages/state-edit.html',
+		controller : 'stateController'
+	})
 
 	.when('/country', {
 		templateUrl : 'pages/country.html',
