@@ -8,20 +8,10 @@ psiaddress.config(function($routeProvider) {
 		templateUrl : 'pages/home.html',
 		controller : 'mainController'
 	})
-
-	.when('/customer', {
-		templateUrl : 'pages/customer.html',
-		controller : 'customerController'
-	})
-
-	.when('/customer-add', {
-		templateUrl : 'pages/customer-add.html',
-		controller : 'customerController'
-	})
-
-	.when('/customer-edit/:id', {
-		templateUrl : 'pages/customer-edit.html',
-		controller : 'customerController'
+	
+	.when('/login', {
+		templateUrl : 'pages/login.html',
+		controller : 'logincontroller'
 	})
 
 	.when('/address', {
@@ -39,6 +29,21 @@ psiaddress.config(function($routeProvider) {
 		controller : 'addressController'
 	})
 
+	.when('/neighbourhood', {
+		templateUrl : 'pages/neighbourhood.html',
+		controller : 'neighbourhoodController'
+	})
+
+	.when('/neighbourhood-add', {
+		templateUrl : 'pages/neighbourhood-add.html',
+		controller : 'neighbourhoodController'
+	})
+
+	.when('/neighbourhood-edit/:id', {
+		templateUrl : 'pages/neighbourhood-edit.html',
+		controller : 'neighbourhoodController'
+	})
+	
 	.when('/city', {
 		templateUrl : 'pages/city.html',
 		controller : 'cityController'

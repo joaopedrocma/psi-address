@@ -14,52 +14,51 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.psi.address.entities.Customer;
-import br.com.psi.address.services.CustomerService;
+import br.com.psi.address.entities.Neighbourhood;
+import br.com.psi.address.services.NeighbourhoodService;
 
 @RestController
-@RequestMapping("/customers")
-public class CustomerController {
+@RequestMapping("/neighbourhoods")
+public class NeighbourhoodController {
 
 	@Autowired
-	private CustomerService customerService;
+	private NeighbourhoodService neighbourhoodService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<Customer> findAll() {
-		return customerService.findAll();
+	public List<Neighbourhood> findAll() {
+		return neighbourhoodService.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Customer findCustomers(@PathVariable("id") int id) {
-		return customerService.findCustomerById(id);
+	public Neighbourhood findNeighbourhood(@PathVariable("id") int id) {
+		return neighbourhoodService.findNeighbourhoodById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Customer> createCustomer(
-			@RequestBody Customer customer) {
-		Customer savedCustomer = customerService.create(customer);
-		return new ResponseEntity<Customer>(savedCustomer, HttpStatus.CREATED);
+	public ResponseEntity<Neighbourhood> createNeighbourhood(@RequestBody Neighbourhood neighbourhood) {
+		Neighbourhood savedNeighbourhood = neighbourhoodService.create(neighbourhood);
+		return new ResponseEntity<Neighbourhood>(savedNeighbourhood, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Customer> updateCustomer(
-			@RequestBody Customer customer) {
-		Customer savedCustomer = customerService.update(customer);
-		return new ResponseEntity<Customer>(savedCustomer, HttpStatus.OK);
+	public ResponseEntity<Neighbourhood> updateNeighbourhood(@RequestBody Neighbourhood neighbourhood) {
+		Neighbourhood savedNeighbourhood = neighbourhoodService.update(neighbourhood);
+		return new ResponseEntity<Neighbourhood>(savedNeighbourhood,
+				HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Void> deleteCustomer(@PathVariable("id") int id) {
-		customerService.deleteCustomer(id);
+	public ResponseEntity<Void> deleteNeighbourhood(@PathVariable("id") int id) {
+		neighbourhoodService.deleteNeighbourhood(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 

@@ -18,9 +18,9 @@
 					<br /> <br />
 
 					<div class="form-group">
-						<input type="search" ng-model="search" placeholder="Buscar por...">
+						<input type="search" ng-model="search" placeholder="Buscar por nome">
 					</div>
-					<table ng-hide="countries.length == 0"
+					<table ng-hide="countryList.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -32,7 +32,7 @@
 						</thead>
 						<tbody>
 							<tr
-								data-ng-repeat="country in countryList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
+								data-ng-repeat="country in countryList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
 								<td>{{country.countryid}}&nbsp;</td>
 								<td>{{country.country}}&nbsp;</td>
 								<td><a data-ng-click="editCountry(country.countryid)"
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</div>
-			<em ng-show="countryList.length == 0">Não Há Países Cadastrados.</em>
+			<em ng-show="countryList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não Há Países Cadastrados.</em>
 		</div>
 	</div>
 </div>

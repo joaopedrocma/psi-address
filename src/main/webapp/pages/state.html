@@ -18,9 +18,9 @@
 					<br /> <br />
 					
 					<div class="form-group">
-						<input type="search" ng-model="search" placeholder="Buscar por...">
+						<input type="search" ng-model="search" placeholder="Buscar por nome">
 					</div>
-					<table ng-hide="states.length == 0"
+					<table ng-hide="stateList.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -31,7 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="state in stateList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
+							<tr data-ng-repeat="state in stateList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
 								<td>{{state.stateid}}&nbsp;</td>
 								<td>{{state.state}}&nbsp;</td>
 								<td><a data-ng-click="editState(state.stateid)"
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			<em ng-show="stateList.length == 0">Não Há Estados Cadastradas.</em>
+			<em ng-show="stateList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não Há Estados Cadastradas.</em>
 		</div>
 	</div>
 </div>

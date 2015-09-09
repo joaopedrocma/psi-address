@@ -1,91 +1,18 @@
 psiaddress.controller('mainController', [ '$scope', function($scope) {
 } ]);
 
-psiaddress.controller('customerController', [ '$scope', '$http', '$location',
-		'$routeParams', 'Customers', 'Addresses',
-		function($scope, $http, $location, $routeParams, Customers, Addresses) {
-			$scope.curPage = 0;
-			$scope.pageSize = 6;
-
-			$scope.title = 'Clientes';
-			$scope.titleAdd = 'Novo Cliente';
-			$scope.titleEdit = 'Editar Cliente';
-			$scope.message = 'Adicionar Cliente';
-
-			$scope.addressList = Addresses.query();
-			$scope.customerList = Customers.query();
-
-			$scope.refresh = function() {
-				$scope.customerList = Customers.query();
-			};
-
-			$scope.init = function() {
-				$scope.updateCustomer = Customers.get({
-					id : $routeParams.id
-				});
-			};
-
-			$scope.reset = function() {
-				$scope.newCustomer = {};
-			};
-
-			$scope.editCustomer = function(customerId) {
-				console.log(customerId);
-				$location.path('/customer-edit/' + customerId);
-			};
-
-			$scope.deleteCustomer = function(customerId) {
-				Customers.remove({
-					id : customerId
-				});
-
-				$location.path('/customer/');
-
-				$scope.refresh();
-			};
-
-			$scope.register = function() {
-				$scope.errorMessages = '';
-				$scope.errors = {};
-
-				Customers.save($scope.newCustomer, function(data) {
-
-					$scope.successMessage = 'Cliente Registrado com Sucesso!';
-
-					$scope.refresh();
-
-					$scope.reset();
-				});
-			};
-
-			$scope.update = function() {
-				$scope.errorMessages = '';
-				$scope.errors = {};
-
-				Customers.edit($scope.updateCustomer, function(data) {
-
-					$location.path('/customer/');
-
-					$scope.refresh();
-
-					$scope.reset();
-				});
-			};
-
-			$scope.refresh();
-
-			$scope.reset();
-
-			$scope.orderBy = 'firstname';
-
-			$scope.numberOfPages = function() {
-				return Math.ceil($scope.customerList.length / $scope.pageSize);
-			}
-		} ]);
-
-psiaddress.controller('addressController', [ '$scope', '$http', '$location',
-		'$routeParams', 'Addresses', 'Cities',
-		function($scope, $http, $location, $routeParams, Addresses, Cities) {
+psiaddress.controller('addressController', [
+		'$scope',
+		'$http',
+		'$location',
+		'$routeParams',
+		'Addresses',
+		'Neighbourhoods',
+		'Cities',
+		'States',
+		'Countries',
+		function($scope, $http, $location, $routeParams, Addresses,
+				Neighbourhoods, Cities, States, Countries) {
 			$scope.curPage = 0;
 			$scope.pageSize = 6;
 
@@ -94,8 +21,17 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			$scope.titleEdit = 'Editar Endereço';
 			$scope.message = 'Adicionar Endereço';
 
-			$scope.cityList = Cities.query();
+			$scope.neighbourhoodList = Neighbourhoods.query();
 			$scope.addressList = Addresses.query();
+			$scope.CityList = Cities.query();
+			$scope.StateList = States.query();
+			$scope.CountryList = Countries.query();
+
+			$scope.getAddress = function(addressId) {
+				$http.get('/address/' + addressId).success(function(local) {
+					$scope.addressfound = local;
+				})
+			};
 
 			$scope.refresh = function() {
 				$scope.addressList = Addresses.query();
@@ -121,9 +57,9 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 					id : addressId
 				});
 
-				$location.path('/address/');
-
 				$scope.refresh();
+
+				$location.path('/address/');
 
 			};
 
@@ -166,6 +102,108 @@ psiaddress.controller('addressController', [ '$scope', '$http', '$location',
 			}
 		} ]);
 
+psiaddress
+		.controller(
+				'neighbourhoodController',
+				[
+						'$scope',
+						'$http',
+						'$location',
+						'$routeParams',
+						'Neighbourhoods',
+						'Cities',
+						function($scope, $http, $location, $routeParams,
+								Neighbourhoods, Cities) {
+							$scope.curPage = 0;
+							$scope.pageSize = 6;
+
+							$scope.title = 'Bairros';
+							$scope.titleAdd = 'Novo Bairro';
+							$scope.titleEdit = 'Editar Bairro';
+							$scope.message = 'Adicionar Bairro';
+
+							$scope.cityList = Cities.query();
+							$scope.neighbourhoodList = Neighbourhoods.query();
+
+							$scope.refresh = function() {
+								$scope.neighbourhoodList = Neighbourhoods
+										.query();
+							};
+
+							$scope.init = function() {
+								$scope.updateNeighbourhood = Neighbourhoods
+										.get({
+											id : $routeParams.id
+										});
+							};
+
+							$scope.reset = function() {
+								$scope.newNeighbourhood = {};
+							};
+
+							$scope.editNeighbourhood = function(neighbourhoodId) {
+								console.log(neighbourhoodId);
+								$location.path('/neighbourhood-edit/'
+										+ neighbourhoodId);
+							};
+
+							$scope.deleteNeighbourhood = function(
+									neighbourhoodId) {
+								Neighbourhoods.remove({
+									id : neighbourhoodId
+								});
+
+								$scope.refresh();
+
+								$location.path('/neighbourhood/');
+
+							};
+
+							$scope.register = function() {
+								$scope.errorMessages = '';
+								$scope.errors = {};
+
+								Neighbourhoods
+										.save(
+												$scope.newNeighbourhood,
+												function(data) {
+
+													$scope.successMessage = 'Bairro Registrado com Sucesso!';
+
+													$scope.refresh();
+
+													$scope.reset();
+												});
+							};
+
+							$scope.update = function() {
+								$scope.errorMessages = '';
+								$scope.errors = {};
+
+								Neighbourhoods.edit($scope.updateNeighbourhood,
+										function(data) {
+
+											$location.path('/neighbourhood/');
+
+											$scope.refresh();
+
+											$scope.reset();
+										});
+							};
+
+							$scope.refresh();
+
+							$scope.reset();
+
+							$scope.orderBy = 'neighbourhood';
+
+							$scope.numberOfPages = function() {
+								return Math
+										.ceil($scope.neighbourhoodList.length
+												/ $scope.pageSize);
+							}
+						} ]);
+
 psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 		'$routeParams', 'Cities', 'States',
 		function($scope, $http, $location, $routeParams, Cities, States) {
@@ -204,9 +242,9 @@ psiaddress.controller('cityController', [ '$scope', '$http', '$location',
 					id : cityId
 				});
 
-				$location.path('/city/');
-
 				$scope.refresh();
+
+				$location.path('/city/');
 			};
 
 			$scope.register = function() {
@@ -286,9 +324,9 @@ psiaddress.controller('stateController', [ '$scope', '$http', '$location',
 					id : stateId
 				});
 
-				$location.path('/state/');
-
 				$scope.refresh();
+
+				$location.path('/state/');
 			};
 
 			$scope.register = function() {
@@ -367,9 +405,9 @@ psiaddress.controller('countryController', [ '$scope', '$http', '$location',
 					id : countryId
 				});
 
-				$location.path('/country/');
-
 				$scope.refresh();
+
+				$location.path('/country/');
 			};
 
 			$scope.register = function() {

@@ -17,19 +17,17 @@ public class Address {
 	@Column(name = "address_id")
 	private int addressid;
 
-	private String address;
+	@Column
+	private String street;
 
-	private String address2;
+	@Column
+	private String complement;
 
-	private String district;
-
-	@Column(name = "city_id")
-	private int cityid;
+	@Column(name = "neighborhood_id")
+	private int neighborhoodid;
 
 	@Column(name = "postal_code")
 	private String postalcode;
-
-	private String phone;
 
 	@Column(name = "last_update")
 	private Date lastupdate;
@@ -37,17 +35,14 @@ public class Address {
 	public Address() {
 	}
 
-	public Address(int addressid, String address, String address2,
-			String district, int cityid, String postalcode, String phone,
-			Date lastupdate) {
+	public Address(int addressid, String street, String complement,
+			int neighborhoodid, String postalcode, Date lastupdate) {
 		super();
 		this.addressid = addressid;
-		this.address = address;
-		this.address2 = address2;
-		this.district = district;
-		this.cityid = cityid;
+		this.street = street;
+		this.complement = complement;
+		this.neighborhoodid = neighborhoodid;
 		this.postalcode = postalcode;
-		this.phone = phone;
 		this.lastupdate = lastupdate;
 	}
 
@@ -59,36 +54,28 @@ public class Address {
 		this.addressid = addressid;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getStreet() {
+		return street;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
-	public String getAddress2() {
-		return address2;
+	public String getComplement() {
+		return complement;
 	}
 
-	public void setAddress2(String address2) {
-		this.address2 = address2;
+	public void setComplement(String complement) {
+		this.complement = complement;
 	}
 
-	public String getDistrict() {
-		return district;
+	public int getNeighborhoodid() {
+		return neighborhoodid;
 	}
 
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-
-	public int getCityid() {
-		return cityid;
-	}
-
-	public void setCityid(int cityid) {
-		this.cityid = cityid;
+	public void setNeighborhoodid(int neighborhoodid) {
+		this.neighborhoodid = neighborhoodid;
 	}
 
 	public String getPostalcode() {
@@ -97,14 +84,6 @@ public class Address {
 
 	public void setPostalcode(String postalcode) {
 		this.postalcode = postalcode;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	public Date getLastupdate() {
@@ -117,9 +96,10 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [addressid=" + addressid + ", address=" + address
-				+ ", address2=" + address2 + ", district=" + district
-				+ ", cityid=" + cityid + ", postalcode=" + postalcode
-				+ ", phone=" + phone + ", lastupdate=" + lastupdate + "]";
+		return "Address [addressid=" + addressid + ", street=" + street
+				+ ", complement=" + complement + ", neighborhoodid="
+				+ neighborhoodid + ", postalcode=" + postalcode
+				+ ", lastupdate=" + lastupdate + "]";
 	}
+
 }

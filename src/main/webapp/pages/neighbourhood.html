@@ -1,8 +1,8 @@
 <meta charset="utf-8">
-<meta name="description" content="Customer Page">
+<meta name="description" content="Neighbourhood Page">
 <meta name="author" content="Jota/Leandro">
 
-<div data-ng-controller="customerController">
+<div data-ng-controller="neighbourhoodController">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -11,60 +11,61 @@
 				</div>
 				<div class="table-responsive">
 					<div style="float: left">
-						<a href="#customer-add"><button type="button"
+						<a href="#neighbourhood-add"><button type="button"
 								class="btn btn-success">{{ message }}</button></a>
 					</div>
-					
+
 					<br /> <br />
-					
+
 					<div class="form-group">
-						<input type="search" ng-model="search" placeholder="Buscar por...">
+						<input type="search" ng-model="search"
+							placeholder="Buscar por nome">
 					</div>
-					<table ng-hide="customers.length == 0"
+					<table ng-hide="neighbourhoodList.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Primeiro Nome</th>
-								<th>Segundo Nome</th>
-								<th>Email</th>
+							<th>Id</th>
+								<th>Bairro</th>
 								<th style="width: 20px;">&nbsp;</th>
 								<th style="width: 20px;">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="customer in customerList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
-								<td>{{customer.customerid}}&nbsp;</td>
-								<td>{{customer.firstname}}&nbsp;</td>
-								<td>{{customer.lastname}}&nbsp;</td>
-								<td>{{customer.email}}&nbsp;</td>
-								<td><a data-ng-click="editCustomer(customer.customerid)"
+							<tr
+								data-ng-repeat="neighbourhood in neighbourhoodList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
+								<td>{{neighbourhood.neighbourhoodid}}&nbsp;</td>
+								<td>{{neighbourhood.neighbourhood}}&nbsp;</td>
+								<td><a
+									data-ng-click="editNeighbourhood(neighbourhood.neighbourhoodid)"
 									class="btn btn-small btn-primary">Editar</a></td>
-								<td><a data-ng-click="deleteCustomer(customer.customerid)"
+								<td><a
+									data-ng-click="deleteNeighbourhood(neighbourhood.neighbourhoodid)"
 									class="btn btn-small btn-danger">Deletar</a></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="pagination pagination-centered"
-						ng-show="customerList.length">
+						ng-show="neighbourhoodList.length">
 						<ul class="pagination-controle pagination">
 							<li>
 								<button type="button" class="btn btn-primary"
 									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
 									&lt; ANT</button>
 							</li>
-							<li><span>Página {{curPage + 1}} De {{ numberOfPages()}}</span></li>
+							<li><span>Página {{curPage + 1}} De {{
+									numberOfPages()}}</span></li>
 							<li>
 								<button type="button" class="btn btn-primary"
-									ng-disabled="curPage >= customerList.length/pageSize - 1"
+									ng-disabled="curPage >= neighbourhoodList.length/pageSize - 1"
 									ng-click="curPage = curPage+1">PROX &gt;</button>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<em ng-show="customerList.length == 0">Não Há Endereços
-				Cadastrados.</em>
+			<em ng-show="neighbourhoodList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
+				Há Bairros Cadastrados.</em>
 		</div>
 	</div>
 </div>

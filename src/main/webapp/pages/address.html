@@ -14,34 +14,36 @@
 						<a href="#address-add"><button type="button"
 								class="btn btn-success">{{ message }}</button></a>
 					</div>
-					
+
 					<br /> <br />
 
 					<div class="form-group">
-						<input type="search" ng-model="search" placeholder="Buscar por...">
+						<input type="search" ng-model="search" placeholder="Buscar por nome">
 					</div>
 					<table ng-hide="addressList.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Endereço</th>
+								<th>CEP</th>
+								<th>Logradouro</th>
 								<th>Complemento</th>
 								<th>Bairro</th>
-								<th>CEP</th>
-								<th>Telefone</th>
+								<th>Cidade</th>
+								<th>Estado</th>
+								<th>País</th>							
 								<th style="width: 20px;">&nbsp;</th>
 								<th style="width: 20px;">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="address in addressList | pagination: curPage * pageSize | limitTo: pageSize | orderBy:orderBy | filter:search">
-								<td>{{address.addressid}}&nbsp;</td>
-								<td>{{address.address}}&nbsp;</td>
-								<td>{{address.address2}}&nbsp;</td>
-								<td>{{address.district}}&nbsp;</td>
+							<tr
+								data-ng-repeat="address in addressList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
 								<td>{{address.postalcode}}&nbsp;</td>
-								<td>{{address.phone}}&nbsp;</td>
+								<td>{{address.street}}&nbsp;</td>
+								<td>{{address.complement}}&nbsp;</td>
+								<td>{{address.neighbourhoodid.neighbourhood}}&nbsp;</td>
+								<td>{{address.neighbourhoodid.cityid.city}}&nbsp;</td>
+								
 								<td><a data-ng-click="editAddress(address.addressid)"
 									class="btn btn-small btn-primary">Editar</a></td>
 								<td><a data-ng-click="deleteAddress(address.addressid)"
@@ -57,7 +59,8 @@
 									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
 									&lt; ANT</button>
 							</li>
-							<li><span>Página {{curPage + 1}} De {{ numberOfPages()}}</span></li>
+							<li><span>Página {{curPage + 1}} De {{
+									numberOfPages()}}</span></li>
 							<li>
 								<button type="button" class="btn btn-primary"
 									ng-disabled="curPage >= addressList.length/pageSize - 1"
@@ -67,8 +70,8 @@
 					</div>
 				</div>
 			</div>
-			<em ng-show="addressList.length == 0">Não Há Endereços
-				Cadastrados.</em>
+			<em ng-show="addressList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
+				Há Endereços Cadastrados.</em>
 		</div>
 	</div>
 </div>
