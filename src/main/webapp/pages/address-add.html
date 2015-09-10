@@ -32,6 +32,28 @@
 
 			<div class="form-group">
 				<div class="col-xs-9">
+					<label class="control-label" for="neighbourhoodid">Bairro:</label> <select
+						class="form-control" data-ng-model="newAddress.neighbourhoodid"
+						data-ng-options="neighbourhood.neighbourhoodid as neighbourhood.neighbourhood for neighbourhood in neighbourhoodList"></select><br />
+				</div>
+
+				<div class="col-xs-9">
+					<label class="control-label" for="cityid">Cidade:</label> <select
+						class="form-control" data-ng-model="newAddress.neighbourhoodid.cityid"
+						data-ng-options="city.cityid as city.city for city in cityList"></select><br />
+				</div>
+
+				<div class="col-xs-9">
+					<label class="control-label" for="neighbourhoodid">Estado:</label>
+					<input type="text" class="form-control" disabled="disabled" /><br />
+				</div>
+
+				<div class="col-xs-9">
+					<label class="control-label" for="neighbourhoodid">País:</label> <input
+						type="text" class="form-control" disabled="disabled" /><br />
+				</div>
+
+				<div class="col-xs-9">
 					<label class="control-label" for="street">Rua:</label> <input
 						class="form-control" type="text" name="street" id="street"
 						data-ng-model="newAddress.street" placeholder="Sua Rua" required /><br />
@@ -41,38 +63,6 @@
 					<input class="form-control" type="text" name="complement"
 						id="complement" data-ng-model="newAddress.complement"
 						placeholder="Complemento de Endereço" required /><br />
-				</div>
-
-				<div class="col-xs-9">
-					<label class="control-label" for="neighbourhoodid">Bairro:</label>
-					<select class="form-control"
-						data-ng-model="newAddress.neighbourhoodid"
-						data-ng-options="neighbourhood.neighbourhoodid as neighbourhood.neighbourhood for neighbourhood in neighbourhoodList"
-						required></select><br />
-				</div>
-				
-				<div class="col-xs-9">
-					<label class="control-label" for="cityid">Cidade:</label>
-					<select class="form-control"
-						data-ng-model="newAddress.neighbourhoodid"
-						data-ng-options="neighbourhood.neighbourhoodid as neighbourhood.neighbourhood for neighbourhood in neighbourhoodList"
-						required></select><br />
-				</div>
-				
-				<div class="col-xs-9">
-					<label class="control-label" for="neighbourhoodid">Bairro:</label>
-					<select class="form-control"
-						data-ng-model="newAddress.neighbourhoodid"
-						data-ng-options="neighbourhood.neighbourhoodid as neighbourhood.neighbourhood for neighbourhood in neighbourhoodList"
-						required></select><br />
-				</div>
-				
-				<div class="col-xs-9">
-					<label class="control-label" for="neighbourhoodid">Bairro:</label>
-					<select class="form-control"
-						data-ng-model="newAddress.neighbourhoodid"
-						data-ng-options="neighbourhood.neighbourhoodid as neighbourhood.neighbourhood for neighbourhood in neighbourhoodList"
-						required></select><br />
 				</div>
 			</div>
 
