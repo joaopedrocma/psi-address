@@ -41,8 +41,10 @@
 								<td>{{address.postalcode}}&nbsp;</td>
 								<td>{{address.street}}&nbsp;</td>
 								<td>{{address.complement}}&nbsp;</td>
-								<td>{{address.neighbourhoodid.neighbourhood}}&nbsp;</td>
-								<td>{{address.neighbourhoodid.cityid.city}}&nbsp;</td>
+								<td>{{address.addressneighbourhood.neighbourhood}}&nbsp;</td>
+								<td>{{address.addressneighbourhood.neighbourhoodcity.city}}&nbsp;</td>
+								<td>{{address.addressneighbourhood.neighbourhoodcity.citystate.state}}&nbsp;</td>
+								<td>{{address.addressneighbourhood.neighbourhoodcity.citystate.statecountry.country}}&nbsp;</td>
 								
 								<td><a data-ng-click="editAddress(address.addressid)"
 									class="btn btn-small btn-primary">Editar</a></td>

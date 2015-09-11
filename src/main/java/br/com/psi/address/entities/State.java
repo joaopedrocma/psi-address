@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,13 +16,14 @@ public class State {
 	@Id
 	@GeneratedValue
 	@Column(name = "state_id")
-	private int stateid;
+	private Integer stateid;
 
 	@Column
 	private String state;
 
-	@Column(name = "country_id")
-	private int countryid;
+	@ManyToOne
+	@JoinColumn(name = "country_id", referencedColumnName = "country_id")
+	private Country statecountry;
 
 	@Column(name = "last_update")
 	private Date lastupdate;
@@ -28,11 +31,20 @@ public class State {
 	public State() {
 	}
 
-	public int getStateid() {
+	public State(Integer stateid, String state, Country statecountry,
+			Date lastupdate) {
+		super();
+		this.stateid = stateid;
+		this.state = state;
+		this.statecountry = statecountry;
+		this.lastupdate = lastupdate;
+	}
+
+	public Integer getStateid() {
 		return stateid;
 	}
 
-	public void setStateid(int stateid) {
+	public void setStateid(Integer stateid) {
 		this.stateid = stateid;
 	}
 
@@ -44,12 +56,12 @@ public class State {
 		this.state = state;
 	}
 
-	public int getCountryid() {
-		return countryid;
+	public Country getStatecountry() {
+		return statecountry;
 	}
 
-	public void setCountryid(int countryid) {
-		this.countryid = countryid;
+	public void setStatecountry(Country statecountry) {
+		this.statecountry = statecountry;
 	}
 
 	public Date getLastupdate() {
@@ -63,7 +75,8 @@ public class State {
 	@Override
 	public String toString() {
 		return "State [stateid=" + stateid + ", state=" + state
-				+ ", countryid=" + countryid + ", lastupdate=" + lastupdate
-				+ "]";
+				+ ", statecountry=" + statecountry + ", lastupdate="
+				+ lastupdate + "]";
 	}
+
 }

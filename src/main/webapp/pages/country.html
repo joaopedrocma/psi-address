@@ -24,7 +24,6 @@
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>País</th>
 								<th style="width: 20px;">&nbsp;</th>
 								<th style="width: 20px;">&nbsp;</th>
@@ -33,7 +32,6 @@
 						<tbody>
 							<tr
 								data-ng-repeat="country in countryList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
-								<td>{{country.countryid}}&nbsp;</td>
 								<td>{{country.country}}&nbsp;</td>
 								<td><a data-ng-click="editCountry(country.countryid)"
 									class="btn btn-small btn-primary">Editar</a></td>

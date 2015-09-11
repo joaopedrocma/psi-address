@@ -24,16 +24,16 @@
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>Cidade</th>
+								<th>Estado</th>
 								<th style="width: 20px;">&nbsp;</th>
 								<th style="width: 20px;">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr data-ng-repeat="city in cityList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
-								<td>{{city.cityid}}&nbsp;</td>
 								<td>{{city.city}}&nbsp;</td>
+								<td>{{city.citystate.state}}&nbsp;</td>
 								<td><a data-ng-click="editCity(city.cityid)"
 									class="btn btn-small btn-primary">Editar</a></td>
 								<td><a data-ng-click="deleteCity(city.cityid)"

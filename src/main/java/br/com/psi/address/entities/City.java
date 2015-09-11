@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,13 +16,14 @@ public class City {
 	@Id
 	@GeneratedValue
 	@Column(name = "city_id")
-	private int cityid;
+	private Integer cityid;
 
 	@Column
 	private String city;
 
-	@Column(name = "state_id")
-	private int stateid;
+	@ManyToOne
+	@JoinColumn(name = "state_id", referencedColumnName = "state_id")
+	private State citystate;
 
 	@Column(name = "last_update")
 	private Date lastupdate;
@@ -28,11 +31,19 @@ public class City {
 	public City() {
 	}
 
-	public int getCityid() {
+	public City(Integer cityid, String city, State citystate, Date lastupdate) {
+		super();
+		this.cityid = cityid;
+		this.city = city;
+		this.citystate = citystate;
+		this.lastupdate = lastupdate;
+	}
+
+	public Integer getCityid() {
 		return cityid;
 	}
 
-	public void setCityid(int cityid) {
+	public void setCityid(Integer cityid) {
 		this.cityid = cityid;
 	}
 
@@ -44,12 +55,12 @@ public class City {
 		this.city = city;
 	}
 
-	public int getStateid() {
-		return stateid;
+	public State getCitystate() {
+		return citystate;
 	}
 
-	public void setStateid(int stateid) {
-		this.stateid = stateid;
+	public void setCitystate(State citystate) {
+		this.citystate = citystate;
 	}
 
 	public Date getLastupdate() {
@@ -62,7 +73,8 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [cityid=" + cityid + ", city=" + city + ", stateid="
-				+ stateid + ", lastupdate=" + lastupdate + "]";
+		return "City [cityid=" + cityid + ", city=" + city + ", citystate="
+				+ citystate + ", lastupdate=" + lastupdate + "]";
 	}
+
 }

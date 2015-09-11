@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,13 +17,14 @@ public class Neighbourhood {
 	@Id
 	@GeneratedValue
 	@Column(name = "neighbourhood_id")
-	private int neighbourhoodid;
+	private Integer neighbourhoodid;
 
 	@Column
 	private String neighbourhood;
 
-	@Column(name = "city_id")
-	private int cityid;
+	@ManyToOne
+	@JoinColumn(name = "city_id", referencedColumnName = "city_id")
+	private City neighbourhoodcity;
 
 	@Column(name = "last_update")
 	private Date lastupdate;
@@ -29,37 +32,37 @@ public class Neighbourhood {
 	public Neighbourhood() {
 	}
 
-	public Neighbourhood(int neighbourhoodid, String neighbourhood, int cityid,
-			Date lastupdate) {
+	public Neighbourhood(Integer neighbourhoodid, String neighbourhood,
+			City neighbourhoodcity, Date lastupdate) {
 		super();
 		this.neighbourhoodid = neighbourhoodid;
 		this.neighbourhood = neighbourhood;
-		this.cityid = cityid;
+		this.neighbourhoodcity = neighbourhoodcity;
 		this.lastupdate = lastupdate;
 	}
 
-	public int getneighbourhoodid() {
+	public Integer getNeighbourhoodid() {
 		return neighbourhoodid;
 	}
 
-	public void setneighbourhoodid(int neighbourhoodid) {
+	public void setNeighbourhoodid(Integer neighbourhoodid) {
 		this.neighbourhoodid = neighbourhoodid;
 	}
 
-	public String getneighbourhood() {
+	public String getNeighbourhood() {
 		return neighbourhood;
 	}
 
-	public void setneighbourhood(String neighbourhood) {
+	public void setNeighbourhood(String neighbourhood) {
 		this.neighbourhood = neighbourhood;
 	}
 
-	public int getCityid() {
-		return cityid;
+	public City getNeighbourhoodcity() {
+		return neighbourhoodcity;
 	}
 
-	public void setCityid(int cityid) {
-		this.cityid = cityid;
+	public void setNeighbourhoodcity(City neighbourhoodcity) {
+		this.neighbourhoodcity = neighbourhoodcity;
 	}
 
 	public Date getLastupdate() {
@@ -72,8 +75,9 @@ public class Neighbourhood {
 
 	@Override
 	public String toString() {
-		return "neighbourhood [neighbourhoodid=" + neighbourhoodid
-				+ ", neighbourhood=" + neighbourhood + ", complement="
-				+ ", cityid=" + cityid + ", lastupdate=" + lastupdate + "]";
+		return "Neighbourhood [neighbourhoodid=" + neighbourhoodid
+				+ ", neighbourhood=" + neighbourhood + ", neighbourhoodcity="
+				+ neighbourhoodcity + ", lastupdate=" + lastupdate + "]";
 	}
+
 }

@@ -14,7 +14,7 @@ public class Country {
 	@Id
 	@GeneratedValue
 	@Column(name = "country_id")
-	private int countryid;
+	private Integer countryid;
 
 	@Column
 	private String country;
@@ -25,18 +25,18 @@ public class Country {
 	public Country() {
 	}
 
-	public Country(int countryid, String country, Date lastupdate) {
+	public Country(Integer countryid, String country, Date lastupdate) {
 		super();
 		this.countryid = countryid;
 		this.country = country;
 		this.lastupdate = lastupdate;
 	}
 
-	public int getCountryid() {
+	public Integer getCountryid() {
 		return countryid;
 	}
 
-	public void setCountryid(int countryid) {
+	public void setCountryid(Integer countryid) {
 		this.countryid = countryid;
 	}
 
@@ -61,4 +61,5 @@ public class Country {
 		return "Country [countryid=" + countryid + ", country=" + country
 				+ ", lastupdate=" + lastupdate + "]";
 	}
+
 }

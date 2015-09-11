@@ -25,8 +25,8 @@
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
-							<th>Id</th>
 								<th>Bairro</th>
+								<th>Cidade</th>
 								<th style="width: 20px;">&nbsp;</th>
 								<th style="width: 20px;">&nbsp;</th>
 							</tr>
@@ -34,8 +34,8 @@
 						<tbody>
 							<tr
 								data-ng-repeat="neighbourhood in neighbourhoodList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
-								<td>{{neighbourhood.neighbourhoodid}}&nbsp;</td>
 								<td>{{neighbourhood.neighbourhood}}&nbsp;</td>
+								<td>{{neighbourhood.neighbourhoodcity.city}}&nbsp;</td>
 								<td><a
 									data-ng-click="editNeighbourhood(neighbourhood.neighbourhoodid)"
 									class="btn btn-small btn-primary">Editar</a></td>

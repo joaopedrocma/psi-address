@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +17,7 @@ public class Address {
 	@Id
 	@GeneratedValue
 	@Column(name = "address_id")
-	private int addressid;
+	private Integer addressid;
 
 	@Column
 	private String street;
@@ -23,8 +25,9 @@ public class Address {
 	@Column
 	private String complement;
 
-	@Column(name = "neighborhood_id")
-	private int neighborhoodid;
+	@ManyToOne
+	@JoinColumn(name = "neighbourhood_id", referencedColumnName = "neighbourhood_id")
+	private Neighbourhood addressneighbourhood;
 
 	@Column(name = "postal_code")
 	private String postalcode;
@@ -35,22 +38,23 @@ public class Address {
 	public Address() {
 	}
 
-	public Address(int addressid, String street, String complement,
-			int neighborhoodid, String postalcode, Date lastupdate) {
+	public Address(Integer addressid, String street, String complement,
+			Neighbourhood addressneighbourhood, String postalcode,
+			Date lastupdate) {
 		super();
 		this.addressid = addressid;
 		this.street = street;
 		this.complement = complement;
-		this.neighborhoodid = neighborhoodid;
+		this.addressneighbourhood = addressneighbourhood;
 		this.postalcode = postalcode;
 		this.lastupdate = lastupdate;
 	}
 
-	public int getAddressid() {
+	public Integer getAddressid() {
 		return addressid;
 	}
 
-	public void setAddressid(int addressid) {
+	public void setAddressid(Integer addressid) {
 		this.addressid = addressid;
 	}
 
@@ -70,12 +74,12 @@ public class Address {
 		this.complement = complement;
 	}
 
-	public int getNeighborhoodid() {
-		return neighborhoodid;
+	public Neighbourhood getAddressneighbourhood() {
+		return addressneighbourhood;
 	}
 
-	public void setNeighborhoodid(int neighborhoodid) {
-		this.neighborhoodid = neighborhoodid;
+	public void setAddressneighbourhood(Neighbourhood addressneighbourhood) {
+		this.addressneighbourhood = addressneighbourhood;
 	}
 
 	public String getPostalcode() {
@@ -97,8 +101,8 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [addressid=" + addressid + ", street=" + street
-				+ ", complement=" + complement + ", neighborhoodid="
-				+ neighborhoodid + ", postalcode=" + postalcode
+				+ ", complement=" + complement + ", addressneighbourhood="
+				+ addressneighbourhood + ", postalcode=" + postalcode
 				+ ", lastupdate=" + lastupdate + "]";
 	}
 

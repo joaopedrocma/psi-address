@@ -24,16 +24,16 @@
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>Estado</th>
+								<th>País</th>
 								<th style="width: 20px;">&nbsp;</th>
 								<th style="width: 20px;">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="state in stateList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
-								<td>{{state.stateid}}&nbsp;</td>
+							<tr data-ng-repeat="state in stateList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">								
 								<td>{{state.state}}&nbsp;</td>
+								<td>{{state.statecountry.country}}&nbsp;</td>
 								<td><a data-ng-click="editState(state.stateid)"
 									class="btn btn-small btn-primary">Editar</a></td>
 								<td><a data-ng-click="deleteState(state.stateid)"
