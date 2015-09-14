@@ -34,8 +34,15 @@ public class AddressController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Address findAddress(@PathVariable("id") int id) {
+	public Address findAddress(@PathVariable("id") Integer id) {
 		return addressService.findAddressById(id);
+	}
+
+	@RequestMapping(value = "{postalcode}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Address findAddressByPostalcode(@PathVariable("postalcode") String postalcode) {
+		return addressService.findAddressByPostalcode(postalcode);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -56,7 +63,7 @@ public class AddressController {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Void> deleteAddress(@PathVariable("id") int id) {
+	public ResponseEntity<Void> deleteAddress(@PathVariable("id") Integer id) {
 		addressService.deleteAddress(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

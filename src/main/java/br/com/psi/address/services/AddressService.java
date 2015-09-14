@@ -22,15 +22,19 @@ public class AddressService {
 		return addressRepository.save(address);
 	}
 
-	public Address findAddressById(int id) {
+	public Address findAddressById(Integer id) {
 		return addressRepository.findOne(id);
+	}
+
+	public Address findAddressByPostalcode(String postalcode) {
+		return addressRepository.findAddressByPostalcode(postalcode);
 	}
 
 	public Address update(Address address) {
 		return addressRepository.save(address);
 	}
 
-	public void deleteAddress(int id) {
+	public void deleteAddress(Integer id) {
 		addressRepository.delete(id);
 	}
 

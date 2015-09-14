@@ -1,106 +1,130 @@
 psiaddress.controller('mainController', [ '$scope', function($scope) {
 } ]);
 
-psiaddress.controller('addressController', [
-		'$scope',
-		'$http',
-		'$location',
-		'$routeParams',
-		'Addresses',
-		'Neighbourhoods',
-		'Cities',
-		'States',
-		'Countries',
-		function($scope, $http, $location, $routeParams, Addresses,
-				Neighbourhoods, Cities, States, Countries) {
-			$scope.curPage = 0;
-			$scope.pageSize = 6;
+psiaddress
+		.controller(
+				'addressController',
+				[
+						'$scope',
+						'$http',
+						'$location',
+						'$routeParams',
+						'Addresses',
+						'Neighbourhoods',
+						'Cities',
+						'States',
+						'Countries',
+						function($scope, $http, $location, $routeParams,
+								Addresses, Neighbourhoods, Cities, States,
+								Countries) {
+							$scope.curPage = 0;
+							$scope.pageSize = 6;
 
-			$scope.title = 'Endereços';
-			$scope.titleAdd = 'Novo Endereço';
-			$scope.titleEdit = 'Editar Endereço';
-			$scope.message = 'Adicionar Endereço';
+							$scope.title = 'Endereços';
+							$scope.titleAdd = 'Novo Endereço';
+							$scope.titleEdit = 'Editar Endereço';
+							$scope.message = 'Adicionar Endereço';
 
-			$scope.neighbourhoodList = Neighbourhoods.query();
-			$scope.addressList = Addresses.query();
-			$scope.CityList = Cities.query();
-			$scope.StateList = States.query();
-			$scope.CountryList = Countries.query();
+							$scope.neighbourhoodList = Neighbourhoods.query();
+							$scope.addressList = Addresses.query();
+							$scope.CityList = Cities.query();
+							$scope.StateList = States.query();
+							$scope.CountryList = Countries.query();
 
-			$scope.getAddress = function(addressId) {
-				$http.get('/address/' + addressId).success(function(local) {
-					$scope.addressfound = local;
-				})
-			};
+			// $scope.testAddress = function(newpostalcode) {
+			//
+			// $scope.addressList
+			// .forEach(function(address) {
+			//
+			// if ((address.postalcode) == newpostalcode)
+			// $scope.neigh = address.addressneighbourhood.neighbourhood;
+			// $scope.cit = address.addressneighbourhood.neighbourhoodcity.city;
+			// $scope.stat =
+			// address.addressneighbourhood.neighbourhoodcity.citystate.state;
+			// $scope.countr =
+			// address.addressneighbourhood.neighbourhoodcity.citystate.statecountry.country;
+			// console.log($scope.cit);
+			//										})
+			//							}
+							
+							$scope.getAddressByPostalcode = function(postalcode){
+								$scope.fullAddress = Addresses.getAddress(postalcode);
+								
+							};
 
-			$scope.refresh = function() {
-				$scope.addressList = Addresses.query();
-			};
+							$scope.refresh = function() {
+								$scope.addressList = Addresses.query();
+							};
 
-			$scope.init = function() {
-				$scope.updateAddress = Addresses.get({
-					id : $routeParams.id
-				});
-			};
+							$scope.init = function() {
+								$scope.updateAddress = Addresses.get({
+									id : $routeParams.id
+								});
+							};
 
-			$scope.reset = function() {
-				$scope.newAddress = {};
-			};
+							$scope.reset = function() {
+								$scope.newAddress = {};
+							};
 
-			$scope.editAddress = function(addressId) {
-				console.log(addressId);
-				$location.path('/address-edit/' + addressId);
-			};
+							$scope.editAddress = function(addressId) {
+								console.log(addressId);
+								$location.path('/address-edit/' + addressId);
+							};
 
-			$scope.deleteAddress = function(addressId) {
-				Addresses.remove({
-					id : addressId
-				});
+							$scope.deleteAddress = function(addressId) {
+								Addresses.remove({
+									id : addressId
+								});
 
-				$scope.refresh();
+								$scope.refresh();
 
-				$location.path('/address/');
+								$location.path('/address/');
 
-			};
+							};
 
-			$scope.register = function() {
-				$scope.errorMessages = '';
-				$scope.errors = {};
+							$scope.register = function() {
+								$scope.errorMessages = '';
+								$scope.errors = {};
 
-				Addresses.save($scope.newAddress, function(data) {
+								Addresses
+										.save(
+												$scope.newAddress,
+												function(data) {
 
-					$scope.successMessage = 'Endereço Registrado com Sucesso!';
+													$scope.successMessage = 'Endereço Registrado com Sucesso!';
 
-					$scope.refresh();
+													$scope.refresh();
 
-					$scope.reset();
-				});
-			};
+													$scope.reset();
+												});
+							};
 
-			$scope.update = function() {
-				$scope.errorMessages = '';
-				$scope.errors = {};
+							$scope.update = function() {
+								$scope.errorMessages = '';
+								$scope.errors = {};
 
-				Addresses.edit($scope.updateAddress, function(data) {
+								Addresses.edit($scope.updateAddress, function(
+										data) {
 
-					$location.path('/address/');
+									$location.path('/address/');
 
-					$scope.refresh();
+									$scope.refresh();
 
-					$scope.reset();
-				});
-			};
+									$scope.reset();
+								});
+							};
 
-			$scope.refresh();
+							$scope.refresh();
 
-			$scope.reset();
+							$scope.reset();
 
-			$scope.orderBy = 'address';
+							$scope.orderBy = 'address';
 
-			$scope.numberOfPages = function() {
-				return Math.ceil($scope.addressList.length / $scope.pageSize);
-			}
-		} ]);
+							$scope.numberOfPages = function() {
+								return Math.ceil($scope.addressList.length
+										/ $scope.pageSize);
+							}
+						} ]);
 
 psiaddress
 		.controller(

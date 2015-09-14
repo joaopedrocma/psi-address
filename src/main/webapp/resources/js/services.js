@@ -6,6 +6,7 @@ var psiaddressService = angular.module('psiaddressService', ['ngResource']);
 		    return $resource(baseUrl + '/addresses/:id', { id: '@id' }, {
 		  query:  {method: 'GET', isArray: true},
 		  get:    {method: 'GET'},
+		  getAddress: {method: 'GET', isArray: false, params: {postalcode: '@postalcode'}},
 		  remove: {method: 'DELETE', params: {id: '@id'}},
 		  edit:   {method: 'PUT', params: {id: '@id'}},
 		  add:    {method: 'POST'}

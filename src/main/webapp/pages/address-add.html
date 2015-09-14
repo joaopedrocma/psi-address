@@ -26,31 +26,35 @@
 					<label class="control-label" for="postalcode">CEP:</label> <input
 						class="form-control" type="text" name="postalcode" id="postalcode"
 						data-ng-model="newAddress.postalcode" placeholder="Seu CEP"
-						required /><br />
+						required /> <a data-ng-click="getAddressByPostalcode(postalcode)"
+						class="btn btn-small btn-primary">Buscar</a>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-xs-9">
-					<label class="control-label" for="neighbourhoodid">Bairro:</label> <select
-						class="form-control" data-ng-model="newAddress.addressneighbourhood"
-						data-ng-options="neighbourhood.neighbourhoodid as neighbourhood.neighbourhood for neighbourhood in neighbourhoodList"></select><br />
+					<label class="control-label" for="neighbourhoodid">Bairro:</label>
+					<input class="form-control" type="text" name="neighbourhood"
+						id="neighbourhood" data-ng-model="newAddress.neighbourhoodid"
+						value="{{fullAddress}}" required /> <br />
+				</div>
+{{fullAddress}}
+				<div class="col-xs-9">
+					<label class="control-label" for="cityid">Cidade:</label> <input
+						class="form-control" type="text" name="city" id="city"
+						value="{{fullAddress.cityAddress}}" disabled="disabled" /> <br />
 				</div>
 
 				<div class="col-xs-9">
-					<label class="control-label" for="cityid">Cidade:</label> <div
-						class="form-control" data-ng-show="neighbourhoodList.neighbourhoodcity.city"
-						></div><br />
+					<label class="control-label" for="stateid">Estado:</label> <input
+						class="form-control" type="text" name="state" id="state"
+						value="{{stateAddress}}" disabled="disabled" /> <br />
 				</div>
 
 				<div class="col-xs-9">
-					<label class="control-label" for="neighbourhoodid">Estado:</label>
-					<input type="text" class="form-control" disabled="disabled" /><br />
-				</div>
-
-				<div class="col-xs-9">
-					<label class="control-label" for="neighbourhoodid">País:</label> <input
-						type="text" class="form-control" disabled="disabled" /><br />
+					<label class="control-label" for="countryid">País:</label> <input
+						class="form-control" type="text" name="country" id="country"
+						value="{{countryAddress}}" disabled="disabled" /> <br />
 				</div>
 
 				<div class="col-xs-9">
