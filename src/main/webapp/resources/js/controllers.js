@@ -14,9 +14,10 @@ psiaddress
 						'Cities',
 						'States',
 						'Countries',
+						'Addressespc',
 						function($scope, $http, $location, $routeParams,
 								Addresses, Neighbourhoods, Cities, States,
-								Countries) {
+								Countries, Addressespc) {
 							$scope.curPage = 0;
 							$scope.pageSize = 6;
 
@@ -31,27 +32,26 @@ psiaddress
 							$scope.StateList = States.query();
 							$scope.CountryList = Countries.query();
 
-			// $scope.testAddress = function(newpostalcode) {
-			//
-			// $scope.addressList
-			// .forEach(function(address) {
-			//
-			// if ((address.postalcode) == newpostalcode)
-			// $scope.neigh = address.addressneighbourhood.neighbourhood;
-			// $scope.cit = address.addressneighbourhood.neighbourhoodcity.city;
-			// $scope.stat =
-			// address.addressneighbourhood.neighbourhoodcity.citystate.state;
-			// $scope.countr =
-			// address.addressneighbourhood.neighbourhoodcity.citystate.statecountry.country;
-			// console.log($scope.cit);
-			//										})
-			//							}
-							
-							$scope.getAddressByPostalcode = function(postalcode){
-								$scope.fullAddress = Addresses.getAddress(postalcode);
+							$scope.findbyid = function(postalcode){
+								$scope.addressbyid = Addresses.get(({id : postalcode}));
 								
-							};
+								$scope.newAddress.aaa = $scope.addressbyid.street;
+							}
+							
+							$scope.test = function(postalcode) {
+								$scope.theaddress = Addressespc.testaddress({
+									postalcode : postalcode
+								});
+								$scope.theaddressnh = theaddress.addressneighbourhood.neighbourhood;
 
+							};
+							
+							$scope.teste = function(postalcode){
+							$scope.test2 = Addressespc.get({postalcode : postalcode});
+							}
+							
+							
+					
 							$scope.refresh = function() {
 								$scope.addressList = Addresses.query();
 							};

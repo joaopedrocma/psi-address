@@ -5,13 +5,18 @@ var psiaddressService = angular.module('psiaddressService', ['ngResource']);
 		psiaddressService.factory('Addresses', function($resource){
 		    return $resource(baseUrl + '/addresses/:id', { id: '@id' }, {
 		  query:  {method: 'GET', isArray: true},
-		  get:    {method: 'GET'},
-		  getAddress: {method: 'GET', isArray: false, params: {postalcode: '@postalcode'}},
+		  get:    {method: 'GET'},	  
 		  remove: {method: 'DELETE', params: {id: '@id'}},
 		  edit:   {method: 'PUT', params: {id: '@id'}},
 		  add:    {method: 'POST'}
 	  });	    
 	});
+	
+	psiaddressService.factory('Addressespc', function($resource){
+		 return $resource(baseUrl + '/addresses/:id', { id: '@id' }, {
+	  get: {method: 'GET'},
+  });	    
+});
 	
 	psiaddressService.factory('Neighbourhoods', function($resource){
 	    return $resource(baseUrl + '/neighbourhoods/:id', { id: '@id' }, {

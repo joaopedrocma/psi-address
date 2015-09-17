@@ -27,7 +27,7 @@ public class AddressService {
 	}
 
 	public Address findAddressByPostalcode(String postalcode) {
-		return addressRepository.findAddressByPostalcode(postalcode);
+		return addressRepository.findOne(postalcode);
 	}
 
 	public Address update(Address address) {

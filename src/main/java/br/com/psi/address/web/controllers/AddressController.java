@@ -34,16 +34,16 @@ public class AddressController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Address findAddress(@PathVariable("id") Integer id) {
+	public Address findAddressById(@PathVariable("id") Integer id) {
 		return addressService.findAddressById(id);
 	}
 
-	@RequestMapping(value = "{postalcode}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public Address findAddressByPostalcode(@PathVariable("postalcode") String postalcode) {
-		return addressService.findAddressByPostalcode(postalcode);
-	}
+	//	@RequestMapping(value = "{postalcode}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	//	@ResponseStatus(HttpStatus.OK)
+	//	@ResponseBody
+	//	public Address findAddressByPostalcode(@PathVariable("postalcode") String postalcode) {
+	//		return addressService.findAddressByPostalcode(postalcode);
+	//	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)

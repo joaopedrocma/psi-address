@@ -26,8 +26,8 @@
 					<label class="control-label" for="postalcode">CEP:</label> <input
 						class="form-control" type="text" name="postalcode" id="postalcode"
 						data-ng-model="newAddress.postalcode" placeholder="Seu CEP"
-						required /> <a data-ng-click="getAddressByPostalcode(postalcode)"
-						class="btn btn-small btn-primary">Buscar</a>
+						required /><br/> <a data-ng-click="findbyid(newAddress.postalcode)"
+						class="btn btn-small btn-primary">Buscar</a><br/>
 				</div>
 			</div>
 
@@ -36,25 +36,26 @@
 					<label class="control-label" for="neighbourhoodid">Bairro:</label>
 					<input class="form-control" type="text" name="neighbourhood"
 						id="neighbourhood" data-ng-model="newAddress.neighbourhoodid"
-						value="{{fullAddress}}" required /> <br />
+						value="{{addressbyid.addressneighbourhood.neighbourhood}}" disabled="disabled" /> <br />
 				</div>
-{{fullAddress}}
+{{newAddress.aaa}}
+
 				<div class="col-xs-9">
 					<label class="control-label" for="cityid">Cidade:</label> <input
 						class="form-control" type="text" name="city" id="city"
-						value="{{fullAddress.cityAddress}}" disabled="disabled" /> <br />
+						value="{{addressbyid.addressneighbourhood.neighbourhoodcity.city}}" disabled="disabled" /> <br />
 				</div>
 
 				<div class="col-xs-9">
 					<label class="control-label" for="stateid">Estado:</label> <input
 						class="form-control" type="text" name="state" id="state"
-						value="{{stateAddress}}" disabled="disabled" /> <br />
+						value="{{addressbyid.addressneighbourhood.neighbourhoodcity.citystate.state}}" disabled="disabled" /> <br />
 				</div>
 
 				<div class="col-xs-9">
 					<label class="control-label" for="countryid">País:</label> <input
 						class="form-control" type="text" name="country" id="country"
-						value="{{countryAddress}}" disabled="disabled" /> <br />
+						value="{{addressbyid.addressneighbourhood.neighbourhoodcity.citystate.statecountry.country}}" disabled="disabled" /> <br />
 				</div>
 
 				<div class="col-xs-9">
